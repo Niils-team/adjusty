@@ -1,0 +1,131 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\AppController;
+use Cake\Mailer\Email;
+use Cake\Routing\Router;
+use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
+
+class EventsController extends AppController
+{
+
+  public function initialize()
+  {
+    parent::initialize();
+    $this->loadComponent('Flash');
+    $this->loadModel('Plans');
+  }
+
+  public function beforeFilter(\Cake\Event\Event $event)
+  {
+    parent::beforeFilter($event);
+    $this->Auth->allow(['e']);
+  }
+
+  public function create()
+  {
+    $event = $this->Events->newEntity();
+    $this->set('event', $event);
+    $this->set('_serialize', ['event']);
+
+    if ($this->request->is('post')) {
+
+       //プラン作成
+       $PlansTable = TableRegistry::get('Plans');
+       $Plans = $PlansTable->newEntity();
+       $Plans->user_id = $this->Auth->user('id');
+       $Plans->title = $this->request->data['title'];
+       $Plans->memo = $this->request->data['memo'];
+       $Plans->code = uniqid(rand(1000, 9999));
+
+      if ($PlansTable->save($Plans)) {
+
+        $EventsTable = TableRegistry::get('Events');
+        $Events = $EventsTable->newEntity();
+        $Events->user_id = $this->Auth->user('id');
+        $Events->plan_id = $Plans->id;
+        $Events->title = $this->request->data['event_title'];
+        $Events->start = $this->request->data['start'] / 1000;
+        $Events->end = $this->request->data['end'] / 1000;
+
+        //終日チェック
+        $deff = $this->request->data['end'] - $this->request->data['start'];
+        if ($deff == 86400000) {
+          $Events->allDay = 1;
+        }
+
+        $EventsTable->save($Events);
+
+        $this->Flash->success(__('イベントを作成しました'));
+        return $this->redirect(['action' => 'comp',$Plans->code]);
+      } else {
+        $this->Flash->error(__('エラーが発生しました'));
+      }
+    }
+  }
+
+  public function complete($code = NULL)
+  {
+
+    $plan = $this->Plans->find()
+    ->where(["code = " => $code])
+    ->first();
+
+    if(empty($plan)){
+      //レコードが存在
+      if ($plan['is_active'] == 0) {
+        $this->Flash->error(__('このプランは非公開です'));
+        return $this->redirect(['controller' => 'Users' , 'action' => 'logintop']);
+      }
+
+    }else{
+
+      //レコードが存在しない場合の処理
+      $this->Flash->error(__('エラーが発生しました'));
+      return $this->redirect(['controller' => 'Users' , 'action' => 'logintop']);
+    }
+    $this->set('plan_url', EVENT_URL.$code);
+    $this->set('plan', $plan);
+  }
+
+  public function comp($code = NULL)
+  {
+  }
+
+
+  public function e($code = NULL)
+  {
+    if (empty($code)) {
+      $this->Flash->error(__('エラーが発生しました'));
+      return $this->redirect(['controller' => 'Users' , 'action' => 'logintop']);
+    }
+
+    $event_count = $this->Events->find()
+    ->where(["code = " => $code])
+    ->count();
+
+    if($event_count == 1){
+
+      //レコードが存在した場合の処理
+      $event = $this->Events->find()
+      ->where(["code = " => $code])
+      ->first();
+
+      if ($event['is_active'] == 0) {
+        $this->Flash->error(__('エラーが発生しました'));
+        return $this->redirect(['controller' => 'Users' , 'action' => 'logintop']);
+      }
+
+    }else{
+
+      //レコードが存在しない場合の処理
+      $this->Flash->error(__('エラーが発生しました'));
+      return $this->redirect(['controller' => 'Users' , 'action' => 'logintop']);
+    }
+
+
+  }
+
+
+}
