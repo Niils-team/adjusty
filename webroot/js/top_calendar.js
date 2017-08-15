@@ -10,10 +10,10 @@ $(document).ready(function() {
         // viewの設定
         views: {
             month: { // name of view
-                titleFormat: 'YYYY, MM, DD'
+                titleFormat: 'YYYY年MM月'
             },
             week: {
-                titleFormat: 'YYYY, MM, DD'
+                titleFormat: 'M月DD日'
             }
         },
         // jQuery UI theme
