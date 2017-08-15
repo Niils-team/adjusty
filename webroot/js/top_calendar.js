@@ -7,6 +7,15 @@ $(document).ready(function() {
             right: 'prev,next today month basicWeek',
             left: 'title',
         },
+        // viewの設定
+        views: {
+            month: { // name of view
+                titleFormat: 'YYYY, MM, DD'
+            },
+            week: {
+                titleFormat: 'YYYY, MM, DD'
+            }
+        },
         // jQuery UI theme
         theme: false,
         // ボタン文字列
