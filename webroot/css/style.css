@@ -834,6 +834,7 @@ ul.collection.collapsible {
 .fc-center h2 {
   font-size: 2rem;
 }
+.fc-left button:focus,
 .fc-right button:focus {
   background-color: #ddd;
 }
