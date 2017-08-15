@@ -107,6 +107,38 @@ nav.adjusty-nav {
 /*nav i.material-icons {
   font-size: 32px;
 }*/
+ul#dropdown2 {
+  position: absolute;
+  background: #fff;
+  margin-top: 0;
+  border: 1px solid #D9DEE4;
+  -webkit-box-shadow: none;
+  right: 0;
+  left: auto;
+  width: 300px !important;
+  top: 52px !important;
+  left: 545px !important;
+}
+ul#dropdown2 li {
+  padding: 5px;
+}
+ul#dropdown2 li.divider {
+  padding: 0;
+}
+ul#dropdown2 li img {
+  width: 40px;
+}
+ul#dropdown2 li a {
+  width: 245px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+.pushedtime {
+  color: #777;
+  font-weight: normal;
+  font-size: 80%;
+}
 span.badge.new {
   background-color: red;
   border-radius: 50%;

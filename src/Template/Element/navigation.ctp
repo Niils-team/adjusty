@@ -7,10 +7,11 @@
   <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
-  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#">○○さんから通知が来届いてます。</a></li>
+  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#" class="right">○○さんから通知が来届いてます。<br><span class="pushedtime">1時間前</span></a></li>
   <li class="divider"></li>
-  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#">○○さんから通知が来届いてます。</a></li>
+  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#" class="right">○○さんから通知が来届いてます。<br><span class="pushedtime">5時間前</span></a></li>
   <li class="divider"></li>
+  <li class="center-align"><a href="#">全ての通知を見る</a></li>
 </ul>
 <nav class="adjusty-nav" role="navigation">
   <div class="nav-wrapper container">
