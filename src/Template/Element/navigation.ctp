@@ -1,5 +1,6 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
+  <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
   <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
   <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
   <li class="divider"></li>
@@ -49,6 +50,7 @@
       </li>
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
+      <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
       <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
       <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
