@@ -4,9 +4,9 @@ $(document).ready(function() {
         // ヘッダーのタイトルとボタン
         header: {
             // title, prev, next, prevYear, nextYear, today
-            left: 'prev,next today',
+            left: 'today prev,next',
             center: 'title',
-            right: 'month agendaWeek agendaDay'
+            right: 'agendaDay,agendaWeek,month,listDay'
         },
         // viewの設定
         views: {

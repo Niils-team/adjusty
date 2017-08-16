@@ -4,15 +4,33 @@ $(document).ready(function() {
         // ヘッダーのタイトルとボタン
         header: {
             // title, prev, next, prevYear, nextYear, today
-            right: 'prev,next today month basicWeek',
-            left: 'title',
+            left: 'prev today next',
+            center: 'title',
+            right: 'month agendaWeek agendaDay'
+        },
+        // viewの設定
+        views: {
+            month: { // name of view
+                titleFormat: 'YYYY年MM月'
+            },
+            week: {
+                titleFormat: 'M月DD日'
+            },
+            agenda: {
+              scrollTime: '07:00:00',
+              minTime:'00:00:00',
+              maxTime:'24:00:00'
+            },
+            day: {
+                titleFormat: 'M月DD日'
+            }
         },
         // jQuery UI theme
         theme: false,
         // ボタン文字列
         buttonText: {
-          prev: '<<', // <
-          next: '>>', // >
+            prev: '<', // <<
+            next: '>', // >>
             prevYear: '前年', // <<
             nextYear: '次年', // >>
             today: '今日',
@@ -27,6 +45,8 @@ $(document).ready(function() {
         allDayText: '終日',
         // スロットの時間の書式
         axisFormat: 'H:mm',
+        // agenda view の縦軸
+        slotLabelFormat: 'H:mm',
         // 時間の書式
         timeFormat: 'H:mm',
         // 月名称

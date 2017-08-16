@@ -974,11 +974,17 @@ div.fc-scroller::-webkit-scrollbar-track {
   margin: 3rem auto;
   border-radius: 50%;
 }
+.urlShare {
+  margin: 1rem auto;
+}
 .url_copy_btn {
   background-color: #888;
   padding: 0 1rem;
   height: 40px;
   line-height: 40px;
+}
+#yourCode {
+  padding-left: .5rem;
 }
 /*----- Event View -----*/
 .planlists {

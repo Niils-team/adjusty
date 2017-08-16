@@ -12,20 +12,22 @@
   <div class="completeCircle valign-wrapper center-align">
     <i class="center-block large material-icons teal-text text-accent-3">done</i>
   </div>
-  <p class="center-align"><?php echo $plan['title']; ?>の予定が作成されました。予定閲覧ページのURLをお相手にお知らせください。</p>
-  <div class="row center-align">
-    <form class="col s12">
+  <p class="center-align"><?php echo $plan['title']; ?>&nbsp;の予定が作成されました。予定閲覧ページのURLをお相手にお知らせください。</p>
+  <div class="row urlShare">
+    <form class="col s12" name="targetForm">
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s10">
+          <input value="<?php echo $plan_url ?>" id="yourCode" type="text" class="validate" name="inputArea">
           <label class="active">【共有URL】</label>
-          <input type="text" value="<?php echo $plan_url ?>" class="validate col s10" id="copy_plan_url"><button id="copyButton" class="btn url_copy_btn tooltipped" data-position="top" data-delay="30" data-tooltip="クリックでコピー"><i class="tiny material-icons">content_copy</i></button>
         </div>
-      </div>
-    </form>
-    <div>
-      <p class="hide">【共有URL】&nbsp;<span id="yourCode"><?php echo $plan_url ?></span>&nbsp;</p>
+        <p class="col s2">
+          <button name="copyButton" id="copyButton" class="btn url_copy_btn tooltipped" data-position="top" data-delay="30" data-tooltip="クリックでコピー">
+            <i class="tiny material-icons">content_copy</i>
+          </button>
+        </p>
     </div>
-  </div>
+  </form>
+</div>
   <div class="center-align">
     <p>ここから相手に送る</p>
     <div class="socials">
