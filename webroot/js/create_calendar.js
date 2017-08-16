@@ -13,7 +13,8 @@ $(document).ready(function() {
         // viewの設定
         views: {
             month: { // name of view
-                titleFormat: 'YYYY年MM月'
+                titleFormat: 'YYYY年MM月',
+                timeFormat: ' '
             },
             week: {
               titleFormat: 'M月DD日',

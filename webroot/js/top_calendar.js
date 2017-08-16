@@ -12,6 +12,7 @@ $(document).ready(function() {
         views: {
             month: { // name of view
                 titleFormat: 'YYYY年MM月',
+                timeFormat: ' '
             },
             week: {
                 titleFormat: 'M月DD日',
