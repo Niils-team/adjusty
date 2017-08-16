@@ -14,7 +14,8 @@ $(document).ready(function() {
                 titleFormat: 'YYYY年MM月'
             },
             week: {
-                titleFormat: 'M月DD日'
+              titleFormat: 'M月DD日',
+              columnFormat: 'M/D ddd'
             },
             agenda: {
               scrollTime: '07:00:00',

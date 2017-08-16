@@ -11,10 +11,11 @@ $(document).ready(function() {
         // viewの設定
         views: {
             month: { // name of view
-                titleFormat: 'YYYY年MM月'
+                titleFormat: 'YYYY年MM月',
             },
             week: {
-                titleFormat: 'M月DD日'
+                titleFormat: 'M月DD日',
+                columnFormat: 'M/D ddd'
             },
             agenda: {
               scrollTime: '07:00:00',
