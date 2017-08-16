@@ -92,7 +92,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
 
-
-
 </body>
+<script>
+  var button = document.getElementById('copyButton');
+  button.addEventListener('click', function(){
+    var yourCode = document.getElementById('yourCode');
+    var range = document.createRange();
+    range.selectNode(yourCode);
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    alert('コピーしました');
+  });
+</script>
 </html>

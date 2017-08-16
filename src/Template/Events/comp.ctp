@@ -17,10 +17,14 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" value="<?php echo $plan_url ?>" class="validate">
+          <label class="active">【共有URL】</label>
+          <input type="text" value="<?php echo $plan_url ?>" class="validate col s10" id="copy_plan_url"><button id="copyButton" class="btn url_copy_btn tooltipped" data-position="top" data-delay="30" data-tooltip="クリックでコピー"><i class="tiny material-icons">content_copy</i></button>
         </div>
       </div>
     </form>
+    <div>
+      <p class="hide">【共有URL】&nbsp;<span id="yourCode"><?php echo $plan_url ?></span>&nbsp;</p>
+    </div>
   </div>
   <div class="center-align">
     <p>ここから相手に送る</p>
