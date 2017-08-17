@@ -26,7 +26,7 @@
       <?php foreach ($plans as $plan):?>
       <li>
         <div class="collapsible-header collection-item avatar">
-          <?php echo $this->Html->image('apple-touch-icon-144x144.png', ['class' => 'circle']); ?>
+          <?php echo $this->Html->image('a_icon.png', ['class' => 'circle']); ?>
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
