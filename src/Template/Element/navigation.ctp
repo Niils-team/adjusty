@@ -11,7 +11,7 @@
   <li class="divider"></li>
   <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#" class="right">○○さんから通知が来届いてます。<br><span class="pushedtime">5時間前</span></a></li>
   <li class="divider"></li>
-  <li class="center-align"><a href="#">全ての通知を見る</a></li>
+  <li class="center-align"><a href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'info']); ?>">全ての通知を見る</a></li>
 </ul>
 <nav class="adjusty-nav" role="navigation">
   <div class="nav-wrapper container">
@@ -23,7 +23,7 @@
       <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
       <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown2">
-          <i class="material-icons tiny">notifications
+          <i class="material-icons" id="notification-icon">notifications
             <!--新しい通知がある場合に表示-->
             <span class="new badge"></span>
             <!--ここまで-->
