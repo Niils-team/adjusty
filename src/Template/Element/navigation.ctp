@@ -19,7 +19,7 @@
     <ul class="right hide-on-med-and-down">
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
-      <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'top']); ?></li>
+      <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
       <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
       <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown2">
@@ -52,7 +52,7 @@
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
       <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
-      <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'top']); ?></li>
+      <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
       <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
       <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
       <li><a href="#!">利用規約</a></li>
@@ -62,5 +62,11 @@
       <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a href="<?= $this->Url->build(["controller" => "Plans", "action" => "info"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
+      <!--新しい通知がある場合に表示-->
+      <span class="new badge"></span>
+      <!--ここまで-->
+      </i>
+    </a>
   </div>
 </nav>

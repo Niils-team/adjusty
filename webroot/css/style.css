@@ -173,6 +173,14 @@ span.badge.new {
 span.badge.new::after {
     content: "a";
 }
+@media screen and (max-width:992px) {
+  span.badge.new {
+    line-height: 3;
+    margin-left: -19px;
+    display: inline-block;
+    float: none;
+  }
+}
 .adjusty-extended-nav span.badge {
   margin-left: 14px;
   text-align: center;
@@ -509,6 +517,7 @@ footer.lp-footer {
   .sp-h1 {
     font-size: 2.28rem;
     line-height: 100%;
+    display: none;
   }
   .sp-h2 {
     font-size: 1.64rem;
@@ -847,7 +856,7 @@ ul.collection.collapsible {
 /*----- Event page common -----*/
 .eventBox, .eventcompBox {
   min-height: 79vh;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
 }
 .fc button {
@@ -912,6 +921,10 @@ ul.collection.collapsible {
 div.fc-scroller::-webkit-scrollbar-track {
   background-color: #fff !important;
 }
+.fc-day-header.fc-widget-header {
+  height: 26px;
+  line-height: 26px;
+}
 @media screen and (max-width:600px) {
   .fc-center {
     margin:0 auto 5px;
@@ -926,7 +939,8 @@ div.fc-scroller::-webkit-scrollbar-track {
 /*----- Event create page -----*/
 .event-step {
   font-size: 1rem;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
+  border-left: 3px solid #777;
 }
 .eventBox .required {
   color: red;
@@ -934,6 +948,10 @@ div.fc-scroller::-webkit-scrollbar-track {
 }
 .create-btn {
   margin-top: 3rem;
+}
+.create-btn button {
+  width: 50%;
+  height: 50px;
 }
 .events-copy-btn {
   padding: 0 1rem;
@@ -991,7 +1009,11 @@ div.fc-scroller::-webkit-scrollbar-track {
     transform: translateY(-140%);
 }
 .addevent {
-  padding: 0 20px;
+  padding: 20px;
+  border: .5px dashed #777;
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
 }
 .addevent_indetail {
   padding: 20px;
@@ -1239,6 +1261,10 @@ p.memo {
   line-height: 2rem;
   color: #000;
   display: block;
+}
+.mypageBox {
+  width: 95%;
+  margin: 0 auto;
 }
 
 /*----- Tablet -----*/

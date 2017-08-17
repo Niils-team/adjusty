@@ -79,7 +79,7 @@
         </div>
 
       <div class="center-align">
-        <?= $this->Form->button('編集する', array(
+        <?= $this->Form->button('更新する', array(
           'div' => false,
           'class' => 'waves-effect waves-light btn'
         ));  ?>

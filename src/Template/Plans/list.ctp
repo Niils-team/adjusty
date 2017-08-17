@@ -26,10 +26,10 @@
       <?php foreach ($plans as $plan):?>
       <li>
         <div class="collapsible-header collection-item avatar">
-          <!-- <?php echo $this->Html->image('ic_work.png', ['class' => 'circle']); ?> -->
-          <i class="material-icons circle">folder</i>
+          <?php echo $this->Html->image('apple-touch-icon-144x144.png', ['class' => 'circle']); ?>
+          <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
-          <p>作成日：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
+          <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
           <a href="#!" class="secondary-content"><i class="material-icons">keyboard_arrow_down</i></a>
         </div>
         <div class="collapsible-body">
