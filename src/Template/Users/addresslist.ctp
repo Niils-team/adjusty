@@ -15,7 +15,7 @@
     <!-- 繋がっているアカウントがあった場合 -->
 
 <?php else: ?>
-  
+
   <!-- 繋がっているアカウントがある場合 -->
 
 
@@ -42,7 +42,7 @@
 
             </div>
         </li>
-  
+
         <?php endforeach ?>
 
       </ul>
@@ -72,14 +72,14 @@
  <?= $this->Form->create() ?>
         <div class="row">
           <div class="input-field col s12">
- 
+
                      <?= $this->Form->email('email', array(
             'div' => false,
             'class' => 'validate',
             'placeholder' => '',
             'required' => true
           )); ?>
-            <label for="email">メールアドレス</label>
+            <label for="email" class="left-align">メールアドレス</label>
           </div>
         </div>
         <div class="row">
@@ -105,5 +105,3 @@
 </div>
 <?= $this->Form->end() ?>
 <!--メールフォーム END-->
-
-

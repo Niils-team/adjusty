@@ -14,10 +14,10 @@
   <?php foreach ($messages as $message): ?>
 
   <li>
-    
+
   <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $message->from_id ]); ?>" class="circle left" />
- 
-  
+
+
   <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request", $message->id ]); ?>" class="right">
 
   <?=h($message->user->name) ?>さんから<?=h($message->title) ?><br>
@@ -27,16 +27,15 @@
 
   </li>
   <li class="divider"></li>
-  
+
 <?php endforeach ?>
 
-  <li class="divider"></li>
-  <li class="center-align"><a href="<?= $this->Url->Build(['controller' => 'Messages', 'action' => 'list']); ?>">全ての通知を見る</a></li>
+  <li class="see-all"><a href="<?= $this->Url->Build(['controller' => 'Messages', 'action' => 'list']); ?>">全ての通知を見る</a></li>
 
 <?php else: ?>
 
     <li class="center-align">メッセージはありません</li>
-  
+
 <?php endif ?>
 
 </ul>
@@ -58,7 +57,7 @@
             <?php if ($msg_flag > 0): ?>
               <span class="new badge"></span>
             <?php endif ?>
-            
+
           </i>
         </a>
       </li>
@@ -94,7 +93,7 @@
       <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    <a href="<?= $this->Url->build(["controller" => "Plans", "action" => "info"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
+    <a href="<?= $this->Url->build(["controller" => "Messages", "action" => "list"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
             <?php if ($msg_flag > 0): ?>
               <span class="new badge"></span>
             <?php endif ?>

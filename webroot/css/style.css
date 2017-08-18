@@ -8,7 +8,7 @@
 
 /*----- Common -----*/
 body {
-  font-family: "Mplus 1p", 'Niconne', cursive;
+  font-family: "Mplus 1p", 'Niconne', cursive, 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
 nav ul a,
 nav .brand-logo {
@@ -150,6 +150,10 @@ ul#dropdown2 li a {
   width: 245px;
   font-size: 12px;
   color: #333;
+  padding: 5px;
+}
+ul#dropdown2 li.see-all {
+  text-align: center;
 }
 .active-info {
   font-weight: bold;
@@ -159,6 +163,10 @@ ul#dropdown2 li a {
   font-weight: normal;
   font-size: 80%;
 }
+.collapsible-header.collection-item.avatar.active .pushedtime {
+  color: #fff;
+}
+
 span.badge.new {
   background-color: red;
   border-radius: 50%;
@@ -517,7 +525,6 @@ footer.lp-footer {
   .sp-h1 {
     font-size: 2.28rem;
     line-height: 100%;
-    display: none;
   }
   .sp-h2 {
     font-size: 1.64rem;
@@ -940,7 +947,7 @@ div.fc-scroller::-webkit-scrollbar-track {
 .event-step {
   font-size: 1rem;
   padding: 5px 5px 5px 10px;
-  border-left: 3px solid #777;
+  border-left: 3px solid #08233E;
 }
 .eventBox .required {
   color: red;
@@ -973,7 +980,7 @@ div.fc-scroller::-webkit-scrollbar-track {
 .events-delete-btn, .events-delete-btn:hover,
 .events-delete-btn:focus, .events-delete-btn:visited {
   background-color: #fff;
-  color: #ddd;
+  color: #999;
   box-shadow: none;
   border-radius: 0;
 }
@@ -1051,7 +1058,7 @@ div.fc-scroller::-webkit-scrollbar-track {
 .planlists-item {
   padding: 15px 5px;
   margin: 0 auto;
-  border: 1px solid #ddd;
+  border: .5px solid #ddd;
 }
 .made-planlists-item {
   padding: 15px 5px;
@@ -1063,7 +1070,7 @@ div.fc-scroller::-webkit-scrollbar-track {
   color: #ddd;
 }
 .planlists-item ul {
-  border: 1px solid #ddd;
+  border: .5px solid #ddd;
   border-radius: 8px;
   padding: 6px;
 }
@@ -1094,7 +1101,7 @@ div.fc-scroller::-webkit-scrollbar-track {
 .num-mid {
   font-size: 1.4rem;
   font-weight: bold;
-  line-height: 4rem;
+  margin: 1rem auto;
 }
 .num-big {
   font-size: 1.8rem;
@@ -1207,9 +1214,8 @@ p.memo {
 /*----- Info page -----*/
 .infoBox {
   min-height: 74vh;
-  margin-top: 45px;
-  width: 50%;
-  margin: 100px auto 0;
+  width: 95%;
+  margin: 0 auto;
 }
 .infoBox h2 {
   font-size: 2rem;
@@ -1302,6 +1308,13 @@ p.memo {
   h4.etitle {
     font-size: 1.5rem;
   }
+  .infoBox {
+    width: 70%;
+    margin: 50px auto 0;
+  }
+  .infoBox h2 {
+    font-size: 2rem;
+  }
 }
 /* PC */
 @media only screen and (min-width: 993px){
@@ -1333,6 +1346,10 @@ p.memo {
   }
   h4.etitle {
     font-size: 1.5rem;
+  }
+  .infoBox {
+    width: 50%;
+    margin: 100px auto 0;
   }
 }
 
