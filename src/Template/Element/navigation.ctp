@@ -6,13 +6,41 @@
   <li class="divider"></li>
   <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
 </ul>
+
 <ul id="dropdown2" class="dropdown-content">
-  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#" class="right">○○さんから通知が来届いてます。<br><span class="pushedtime">1時間前</span></a></li>
+
+<?php if ($msg_cnt > 0): ?>
+
+  <?php foreach ($messages as $message): ?>
+
+  <li>
+    
+  <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $message->from_id ]); ?>" class="circle left" />
+ 
+  
+  <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request", $message->id ]); ?>" class="right">
+
+  <?=h($message->user->name) ?>さんから<?=h($message->title) ?><br>
+  <span class="pushedtime"><?php echo convert_to_fuzzy_time($message['modified']);?></span>
+
+  </a>
+
+  </li>
   <li class="divider"></li>
-  <li><img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" /><a href="#" class="right">○○さんから通知が来届いてます。<br><span class="pushedtime">5時間前</span></a></li>
+  
+<?php endforeach ?>
+
   <li class="divider"></li>
-  <li class="center-align"><a href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'info']); ?>">全ての通知を見る</a></li>
+  <li class="center-align"><a href="<?= $this->Url->Build(['controller' => 'Messages', 'action' => 'list']); ?>">全ての通知を見る</a></li>
+
+<?php else: ?>
+
+    <li class="center-align">メッセージはありません</li>
+  
+<?php endif ?>
+
 </ul>
+
 <nav class="adjusty-nav" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'top']); ?>" class="brand-logo">Adjusty</a>
@@ -23,10 +51,14 @@
       <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
       <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown2">
+
+
           <i class="material-icons" id="notification-icon">notifications
-            <!--新しい通知がある場合に表示-->
-            <span class="new badge"></span>
-            <!--ここまで-->
+
+            <?php if ($msg_flag > 0): ?>
+              <span class="new badge"></span>
+            <?php endif ?>
+            
           </i>
         </a>
       </li>
@@ -63,9 +95,9 @@
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
     <a href="<?= $this->Url->build(["controller" => "Plans", "action" => "info"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
-      <!--新しい通知がある場合に表示-->
-      <span class="new badge"></span>
-      <!--ここまで-->
+            <?php if ($msg_flag > 0): ?>
+              <span class="new badge"></span>
+            <?php endif ?>
       </i>
     </a>
   </div>

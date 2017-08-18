@@ -6,31 +6,11 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Calenders Model
- *
- * @property \Cake\ORM\Association\BelongsTo $Users
- * @property \Cake\ORM\Association\BelongsTo $Plans
- *
- * @method \App\Model\Entity\Calender get($primaryKey, $options = [])
- * @method \App\Model\Entity\Calender newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Calender[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Calender|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Calender patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Calender[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Calender findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
+
 class CalendersTable extends Table
 {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
+
     public function initialize(array $config)
     {
         parent::initialize($config);

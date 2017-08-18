@@ -53,7 +53,12 @@ class UsersTable extends Table
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Relationships', [
-            'foreignKey' => 'user_id'
+            // 'foreignKey' => 'user_id'
+            'foreignKey' => 'target_id'
+        ]);
+        $this->hasMany('Messages', [
+            // 'foreignKey' => 'user_id'
+            'foreignKey' => 'from_id'
         ]);
 
     }

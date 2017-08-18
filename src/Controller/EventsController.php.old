@@ -12,9 +12,11 @@ class EventsController extends AppController
 
   public function initialize()
   {
+
     parent::initialize();
     $this->loadComponent('Flash');
     $this->loadModel('Plans');
+    
   }
 
   public function beforeFilter(\Cake\Event\Event $event)

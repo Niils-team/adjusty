@@ -99,7 +99,7 @@
               )); ?>
           <label class="active">メモ</label>
         </div>
-    	</div>
+      </div>
 
    </div><!--STEP1 END -->
 
@@ -125,7 +125,7 @@
   </div><!--STEP2 END -->
 
   <div class="row"><!--STEP3 STRAT -->
-    <h5 class="event-step">送信先</h5>
+<!--     <h5 class="event-step">送信先</h5>
       <div class="row">
         <div class="input-field col s12">
           <p>
@@ -137,7 +137,7 @@
             <label for="to_friend">連絡先から選ぶ</label>
           </p>
         </div>
-      </div>
+      </div> -->
 
       <div class="center-align create-btn">
          <?= $this->Form->button('予定を作成', array(
@@ -149,7 +149,7 @@
 
  </div><!--STEP3 END -->
  <!-- Frient list Modal START -->
- <ul class="collection">
+<!--  <ul class="collection">
    <li class="collection-item avatar">
      <input name="friendSelect" type="radio" />
      <label>
@@ -176,9 +176,9 @@
        <p class="companyName">【会社名】</p>
      </label>
    </li>
- </ul>
+ </ul> -->
  <!-- Frient list Modal END -->
 
- 	</div><!-- eventBox -->
+  </div><!-- eventBox -->
 
 <?= $this->Form->end() ?>
