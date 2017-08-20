@@ -34,7 +34,7 @@
 
 <?php else: ?>
 
-    <li class="center-align">メッセージはありません</li>
+    <li class="see-all">メッセージはありません</li>
 
 <?php endif ?>
 

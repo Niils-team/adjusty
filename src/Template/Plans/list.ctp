@@ -2,7 +2,7 @@
 <div class="adjusty-extended-nav">
   <div class="container">
     <div class="row">
-      <!-- 調整中案件があれば件数とともに表示 -->
+      <!-- 依頼を受けた＆未読の案件があれば件数とともに表示 -->
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>" class="indicator">調整リスト<span class="badge red">4</span></a></div>
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'calendar']); ?>">カレンダー</a></div>
     </div>
@@ -21,15 +21,28 @@
 
 <div class="planBox">
   <div class="has-plans">
-    <ul class="collection collapsible" data-collapsible="accordion">
+    <div class="row statusBox">
+      <div class="col s4">
+        <i class="tiny material-icons blue-text deg-x-180">trending_flat</i> 依頼した予定<br>
+        <i class="tiny material-icons red-text">trending_flat</i> 依頼された予定
+      </div>
+      <div class="col s8">
+        <div class="right">
+          <a href="#">すべて</a> | <a href="#">調整中</a> | <a href="#">確定済</a>
+        </div>
+      </div>
+    </div>
+    <ul class="collection collapsible statusList" data-collapsible="accordion">
 
       <?php foreach ($plans as $plan):?>
       <li>
         <div class="collapsible-header collection-item avatar">
+          <i class="tiny material-icons blue-text deg-x-180 plan_arrow">trending_flat</i>
           <?php echo $this->Html->image('a_icon.png', ['class' => 'circle']); ?>
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
+          <span class="adjusty-status"><i class="tiny material-icons red-text">lens</i>調整中</span>
           <a href="#!" class="secondary-content"><i class="material-icons">keyboard_arrow_down</i></a>
         </div>
         <div class="collapsible-body">

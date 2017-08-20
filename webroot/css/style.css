@@ -1173,10 +1173,10 @@ p.memo {
 .addresslistBox {
   width: 50%;
   margin: 0 auto;
-  min-height: 75vh;
+  min-height: 82.5vh;
 }
 .noaddress {
-  padding: 50px 0;
+  padding: 150px 0;
 }
 .has-address ul.collection {
   border: 1px solid #e0e0e0;
@@ -1368,4 +1368,47 @@ input[type=number]:disabled, input[type=number][readonly="readonly"],
 input[type=search]:disabled, input[type=search][readonly="readonly"],
 textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="readonly"] {
   color: inherit;
+}
+.deg-x-180 {
+  transform: rotateY( 180deg );
+}
+.adjusty-status {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 10px;
+}
+.adjusty-status i {
+  font-size: .5rem;
+  float: none;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  line-height: 1;
+}
+.statusList.collection .collection-item.avatar {
+  padding-left: 110px;
+}
+.collapsible-header i.plan_arrow {
+  position: absolute;
+  left: 10px;
+  font-size: 1rem;
+}
+.collection.statusList .collection-item.avatar .circle {
+  left: 50px;
+}
+.statusList.collection .collection-item.avatar .secondary-content {
+  right: 50%;
+  left: 50%;
+  top: 50px;
+}
+@media screen and (max-width:992px) {
+  .statusBox {
+    padding-top: 15px;
+    width: 95%;
+    font-size: .8rem;
+  }
+  .statusList.collection .collection-item.avatar .title {
+    font-size: 14px;
+  }
 }
