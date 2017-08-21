@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\AppController;
 use Cake\Mailer\Email;
 use Cake\Routing\Router;
 use Cake\I18n\Time;
@@ -43,7 +44,7 @@ class UsersController extends AppController
     }
 
 
- 
+
     public function login()
     {
         $this->viewBuilder()->layout('before');
@@ -1053,7 +1054,7 @@ public function addresslist()
 
     //友達一覧
     $this->loadModel('Relationships');
-    
+
     $friends = $this->Relationships->find()
     ->where(['user_id' =>$user['id'],'accept_flag' => 1])
     ->contain(['Users'])
@@ -1087,7 +1088,7 @@ public function addresslist()
         ->first();
 
         if ($friend_result) {
-        
+
             $articlesTable = TableRegistry::get('Relationships');
             $article = $articlesTable->get($friend_result['id']);
             $article->user_id = $this->Auth->user('id');
@@ -1116,7 +1117,7 @@ public function addresslist()
                 ->first();
 
                 if ($msg_result) {
-                
+
                     $articlesTable = TableRegistry::get('Messages');
                     $article = $articlesTable->get($msg_result['id']);
                     $article->from_id = $this->Auth->user('id');
@@ -1132,8 +1133,7 @@ public function addresslist()
                     $article->from_id = $this->Auth->user('id');
                     $article->user_id = $target_user->id;
                     $article->kind_id = 1;
-                    $article->title = '承認リクエストが届いています。
-';
+                    $article->title = '承認リクエストが届いています。';
 
                     $articlesTable->save($article);
 
@@ -1141,6 +1141,14 @@ public function addresslist()
 
 
                 //メール送信
+                // $email = new Email('default');
+                // $email->from([SUPPORT_MAIL => FROM_NAME])
+                // ->to($email)
+                // ->subject('【Ajusty】友達申請のお知らせ')
+                // ->emailFormat('text')
+                // ->template('friend')
+                // ->viewVars(['name' => $user['name']])
+                // ->send();
 
             }
 
@@ -1166,7 +1174,7 @@ public function addresslist()
 
        public function drawOther($target_id = null)
        {
-        
+
         $image = $this->Users->get($target_id, [
           'contain' => [],
           ]);

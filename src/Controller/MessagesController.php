@@ -26,7 +26,7 @@ class MessagesController extends AppController
 
     public function beforeFilter(\Cake\Event\Event $event)
     {
-      
+
         parent::beforeFilter($event);
 
 
@@ -53,6 +53,7 @@ class MessagesController extends AppController
 
   public function list()
   {
+    
   }
 
 

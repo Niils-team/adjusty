@@ -2,14 +2,24 @@
 <div class="infoBox">
   <h2>承認リクエスト</h2>
   <ul class="collection">
+  <?= $this->Form->create() ?>
     <li class="collection-item avatar">
-      <img src="<?= $this->Url->build(["controller" => "Users", "action" => "draw", 1]); ?>" class="circle left" />
-        <span class="truncate active-info">名前</span>
-        <span class="pushedtime">所属</span>
+        <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $from_user->id ]); ?>" class="circle" />
+
+        <span class="truncate active-info">名前 <?= h($from_user->name) ?></span>
+
+        <span class="pushedtime">所属 <?= h($from_user->company_name) ?></span>
+
         <p class="right">
-          <button class="btn btn delete-btn" type="submit" name="action">削除する</button>
-          <button class="btn waves-effect waves-light" type="submit" name="action">承認する</button>
+
+
+        <?php echo $this -> Form -> button ( "ブロック", [ "class" => "btn btn delete-btn","name" => 'block', "value" => $from_user->id ] ); ?>
+
+        <?php echo $this -> Form -> button ( "承認する", [ "class" => "btn waves-effect waves-light","name" => 'accept', "value" => $from_user->id ] ); ?>
+
         </p>
+
     </li>
+<?=$this->Form->end() ?>
   </ul>
 </div>
