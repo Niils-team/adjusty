@@ -18,7 +18,7 @@
   <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $message->from_id ]); ?>" class="circle left" />
 
 
-  <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request", $message->id ]); ?>" class="right">
+  <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request",$message->from_id,$message->id]); ?>" class="right">
 
   <?=h($message->user->name) ?>さんから<?=h($message->title) ?><br>
   <span class="pushedtime"><?php echo convert_to_fuzzy_time($message['modified']);?></span>
