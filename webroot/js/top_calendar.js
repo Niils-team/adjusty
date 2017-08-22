@@ -4,9 +4,9 @@ $(document).ready(function() {
         // ヘッダーのタイトルとボタン
         header: {
             // title, prev, next, prevYear, nextYear, today
-            left: 'today prev,next',
+            left: 'prev,today,next',
             center: 'title',
-            right: 'agendaDay,agendaWeek,month,listDay'
+            right: 'agendaDay,agendaWeek,month,listWeek'
         },
         // viewの設定
         views: {
@@ -25,6 +25,10 @@ $(document).ready(function() {
             },
             day: {
                 titleFormat: 'M月DD日'
+            },
+            listWeek: {
+              listDayAltFormat: 'M月DD日',
+              noEventsMessage: '表示する予定がありません',
             }
         },
         // jQuery UI theme
@@ -38,7 +42,8 @@ $(document).ready(function() {
             today: '今日',
             month: '月',
             week: '週',
-            day: '日'
+            day: '日',
+            listWeek: 'スケジュール'
         },
 
         // 終日スロットを表示
