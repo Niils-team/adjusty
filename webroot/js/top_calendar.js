@@ -12,7 +12,7 @@ $(document).ready(function() {
         views: {
             month: { // name of view
                 titleFormat: 'YYYY年MM月',
-                timeFormat: ' '
+                timeFormat: ' ',
             },
             week: {
                 titleFormat: 'M月DD日',
@@ -42,8 +42,7 @@ $(document).ready(function() {
             today: '今日',
             month: '月',
             week: '週',
-            day: '日',
-            listWeek: 'スケジュール'
+            day: '日'
         },
 
         // 終日スロットを表示
@@ -90,5 +89,6 @@ $(document).ready(function() {
 
 
     });
+    $(".fc-listWeek-button").html('<i class="small material-icons" style="font-size:1.5rem;line-height:1.2;">list</i>');
 
 });

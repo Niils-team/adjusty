@@ -120,8 +120,11 @@ ul#dropdown1 li > a {
   color: #333;
   font-size: .9rem;
 }
-#notification-icon {
+#notification-icon, #friend-icon {
   font-size: 18px;
+}
+#info-icon {
+  font-size: 20px;
 }
 ul#dropdown2 {
   position: absolute;
