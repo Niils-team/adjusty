@@ -12,7 +12,15 @@
     <div class="profBox-relative">
       <h5 class="truncate"><?php echo h($user['name']); ?></h5>
       <p class="profBox-text truncate"><i class="tiny left material-icons prefix">business</i><?php echo h($user['company_name']); ?></p>
+
+      <?php if($user['company_dep'] != null): ?>
+      <p class="profBox-text truncate"><i class="tiny left material-icons prefix">assignment_ind</i><?php echo h($user['company_dep']); ?>&nbsp;&nbsp;<?php echo h($user['company_position']); ?></p>
+      <?php else: ?>
       <p class="profBox-text truncate"><i class="tiny left material-icons prefix">assignment_ind</i><?php echo h($user['company_position']); ?></p>
+      <?php endif; ?>
+
+      <p class="profBox-text truncate"><i class="tiny left material-icons prefix">place</i><?php echo h($user['company_address']); ?></p>
+      <p class="profBox-text truncate"><i class="tiny left material-icons prefix">web_asset</i><a href="<?php echo h($user['company_url']); ?>" target="_blank"><?php echo h($user['company_url']); ?></a></p>
       <!-- <a class="profBox-absolute z-depth-1" href="<?= $this->Url->Build(['controller' => 'Users', 'action' => 'img-edit']); ?>"><i class="tiny left material-icons">photo_camera</i><span class="hide-on-small-only">写真を</span>変更</a> -->
     </div>
   </div>
