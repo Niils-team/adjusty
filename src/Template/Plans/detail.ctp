@@ -42,15 +42,15 @@ $('#submit').click(function() {
 
 </script>
 
-<div class="planBox">
-    <h1 class="center-align sp-h1">予定の編集</h1>
+<div class="plandetailBox">
+    <h1 class="center-align sp-h1 hide-on-small-only">予定の編集</h1>
 
     <?=$this->Form->create($plan,[
         'type' => 'post',
         'url' => ['controller' => 'Plans', 'action' => 'detailEdit']]
     ) ?>
 <?=$this->Form->hidden( 'plan_id' ,['value'=> $plan['id'] ]) ?>
-  <h5 class="white-text grey darken-1 event-step">予定名</h5>
+  <h5 class="event-step">予定名</h5>
   <div class="center-align">
 
       <div class="row">
@@ -70,7 +70,7 @@ $('#submit').click(function() {
 
   </div>
 
-  <h5 class="white-text grey darken-1 event-step">メモ</h5>
+  <h5 class="event-step">メモ</h5>
   <div class="center-align">
 
       <div class="row">
@@ -96,11 +96,11 @@ $('#submit').click(function() {
 <?=$this->Form->end() ?>
 
   <?php if (!isset($plan['memo'])): ?>
-    <h5 class="white-text grey darken-1 event-step">メモ</h5>
+    <h5 class="event-step">メモ</h5>
     <p class="memo"><?php echo $plan['memo']; ?></p>
   <?php endif; ?>
 
-  <h5 class="white-text grey darken-1 event-step">共有URL ※共有URLの編集はできません</h5>
+  <h5 class="event-step">共有URL ※共有URLの編集はできません</h5>
   <div class="center-align">
 
       <div class="row">
@@ -123,7 +123,7 @@ $('#submit').click(function() {
     </div>
   </div>
 
-  <h5 class="white-text grey darken-1 event-step">候補日一覧</h5>
+  <h5 class="event-step">候補日一覧</h5>
   <div class="planlists">
     <?php $i=0; foreach ($events as $event):?>
 
@@ -155,7 +155,7 @@ $('#submit').click(function() {
       <div class="col s9">
         <h4 class="etitle">
           <?php echo date('Y', strtotime($event['start'])); ?>年<?php echo date('m', strtotime($event['start'])); ?>月<?php echo date('d', strtotime($event['start'])); ?>日
-          （<?php echo $weekjp[$weekno];?>）　<?php
+          （<?php echo $weekjp[$weekno];?>）<br><?php
           # 終日チェック
           if ($event['allDay'] == 1) {
             echo '終日';
@@ -190,10 +190,12 @@ $('#submit').click(function() {
 
     <?php $i++; endforeach; ?>
 
-      <div class="addevent_indetail">
-        <a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'add',$plan['id']]); ?>" ><span class="btn-floating blue"><i class="material-icons left">add</i></span>&nbsp;候補日を追加</a>
+    <a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'add',$plan['id']]); ?>" >
+      <div class="addevent">
+        <span class="btn-floating grey lighten-1"><i class="material-icons left">add</i></span>&nbsp;候補日を追加
       </div>
-      <a href="#" onclick="javascript:window.history.back(-1);return false;" class="btn back-btn"><i class="small left material-icons">arrow_back</i>プラン一覧に戻る</a>
+    </a>
+    <a href="#" onclick="javascript:window.history.back(-1);return false;" class="btn back-btn"><i class="small left material-icons">arrow_back</i>プラン一覧に戻る</a>
 
 
   </div>

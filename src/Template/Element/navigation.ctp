@@ -40,6 +40,15 @@
 
 </ul>
 
+<ul id="dropdown3" class="dropdown-content">
+  <li><a href="#!">ヘルプ</a></li>
+  <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
+</ul>
+
+<ul id="dropdown4" class="dropdown-content">
+  <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
+</ul>
+
 <nav class="adjusty-nav" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'top']); ?>" class="brand-logo">Adjusty</a>
@@ -47,7 +56,16 @@
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
       <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
-      <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="dropdown4">
+          <i class="material-icons" id="friend-icon">perm_contact_calendar</i>
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="dropdown3">
+          <i class="material-icons" id="info-icon">info_outline</i>
+        </a>
+      </li>
       <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown2">
 

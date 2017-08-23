@@ -4,15 +4,15 @@ $(document).ready(function() {
         // ヘッダーのタイトルとボタン
         header: {
             // title, prev, next, prevYear, nextYear, today
-            left: 'today prev,next',
+            left: 'prev,today,next',
             center: 'title',
-            right: 'agendaDay,agendaWeek,month,listDay'
+            right: 'agendaDay,agendaWeek,month,listWeek'
         },
         // viewの設定
         views: {
             month: { // name of view
                 titleFormat: 'YYYY年MM月',
-                timeFormat: ' '
+                timeFormat: ' ',
             },
             week: {
                 titleFormat: 'M月DD日',
@@ -25,6 +25,10 @@ $(document).ready(function() {
             },
             day: {
                 titleFormat: 'M月DD日'
+            },
+            listWeek: {
+              listDayAltFormat: 'M月DD日',
+              noEventsMessage: '表示する予定がありません',
             }
         },
         // jQuery UI theme
@@ -85,5 +89,6 @@ $(document).ready(function() {
 
 
     });
+    $(".fc-listWeek-button").html('<i class="small material-icons" style="font-size:1.5rem;line-height:1.2;">list</i>');
 
 });

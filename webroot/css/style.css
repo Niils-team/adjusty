@@ -17,6 +17,9 @@ nav .brand-logo {
 nav ul a {
   font-size: .9rem;
 }
+nav ul a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 nav .button-collapse {
   margin: 0;
 }
@@ -117,8 +120,11 @@ ul#dropdown1 li > a {
   color: #333;
   font-size: .9rem;
 }
-#notification-icon {
+#notification-icon, #friend-icon {
   font-size: 18px;
+}
+#info-icon {
+  font-size: 20px;
 }
 ul#dropdown2 {
   position: absolute;
@@ -139,6 +145,7 @@ nav ul#dropdown2 a:hover {
 }
 ul#dropdown2 li {
   padding: 5px;
+  line-height: 2.5rem;
 }
 ul#dropdown2 li.divider {
   padding: 0;
@@ -181,6 +188,21 @@ span.badge.new {
 span.badge.new::after {
     content: "a";
 }
+ul#dropdown3, ul#dropdown4 {
+  position: absolute;
+  background: #fff;
+  margin-top: 0;
+  border: 1px solid #D9DEE4;
+  -webkit-box-shadow: none;
+  right: 0;
+  left: auto;
+  top: 64px !important;
+}
+ul#dropdown3 li > a, ul#dropdown4 li > a {
+  color: #333;
+  font-size: .9rem;
+}
+
 @media screen and (max-width:992px) {
   span.badge.new {
     line-height: 3;
@@ -561,10 +583,10 @@ footer.lp-footer {
 .entryBox, .loginBox, .logoutBox, .remindBox, .forgotBox {
   min-height: 77vh;
 }
-.mypageBox, .planBox {
+.mypageBox, .planBox, .plandetailBox {
   min-height: 83vh;
 }
-.planBox {
+.planBox, .plandetailBox {
   margin-top: 30px;
 }
 .pad {
@@ -828,6 +850,11 @@ ul.collection.collapsible {
   margin: 0 auto;
   width: 95%;
 }
+.friendpagetable {
+  padding: 10px;
+  margin: 70px auto 0;
+  width: 95%;
+}
 .mypageBox .center-align button {
   margin: 0 auto 20px;
 }
@@ -868,6 +895,22 @@ ul.collection.collapsible {
 }
 .fc button {
   padding: 0 1.2rem !important;
+  border: 1px solid #777;
+  background-color: #fff;
+  box-shadow: none;
+  background-image: none;
+  text-shadow: none;
+}
+.fc-left button:focus, .fc-right button:focus {
+  background-color: #2C5379 !important;
+  color: #fff !important;
+}
+.fc-state-active {
+  background-color: #2C5379 !important;
+  color: #fff !important;
+}
+.fc-state-disabled {
+  opacity: .3 !important;
 }
 .fc-center {
   margin: 0 auto;
@@ -884,18 +927,21 @@ ul.collection.collapsible {
 }
 .fc-view-container {
   font-size: .8em;
-  /*box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px,
-              rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px,
-              rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;*/
 }
 .fc-view-container thead {
   border-bottom: none !important;
+}
+.fc-toolbar.fc-header-toolbar {
+  margin-bottom: 2em !important;
 }
 .fc-unthemed td.fc-today {
   background: #9fa8da;
 }
 .fc td, .fc th {
   border-style: none;
+}
+.fc-widget-header {
+  border: none !important;
 }
 .fc-day-top td {
   border-top: 1px solid #ddd;
@@ -910,9 +956,9 @@ ul.collection.collapsible {
 .fc-row .fc-helper-skeleton td {
   text-align: center;
 }
-.fc-content-skeleton {
+/*.fc-content-skeleton {
   border-top: 1px solid #ddd !important;
-}
+}*/
 .fc-day-top.fc-fri.fc-today.fc-state-highlight {
   background-color: #9fa8da;
 }
@@ -929,9 +975,27 @@ div.fc-scroller::-webkit-scrollbar-track {
   background-color: #fff !important;
 }
 .fc-day-header.fc-widget-header {
-  height: 26px;
-  line-height: 26px;
+  height: 23px;
+  line-height: 23px;
 }
+.fc-unthemed td {
+  border-color: #9a9a9a !important;
+}
+.fc-unthemed .fc-divider {
+  background: #2C5379 !important;
+}
+.fc-month-view td, .fc-month-view th {
+  border-left: none !important;
+  border-right: none !important;
+}
+.fc-month-view td.fc-today {
+  border-left: none;
+  border-right: none;
+}
+.fc-body {
+  border: 1px solid #9a9a9a !important;
+}
+
 @media screen and (max-width:600px) {
   .fc-center {
     margin:0 auto 5px;
@@ -940,7 +1004,37 @@ div.fc-scroller::-webkit-scrollbar-track {
     margin-bottom: 5px;
   }
   .fc-toolbar .fc-right{
-    float: left !important;
+    position: fixed;
+    top: 87px;
+    z-index: 0;
+    width: 101%;
+    height: 50px;
+    float: none !important;
+  }
+  .fc-toolbar .fc-right .fc-button-group {
+    width: 100%;
+    height: 90%;
+    display: block;
+  }
+  .fc-toolbar .fc-right .fc-button-group button {
+    width: 25%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .fc-toolbar .fc-left {
+    position: fixed;
+    top: 150px;
+    right: 0;
+  }
+  .fc-toolbar .fc-center {
+    position: fixed;
+    top: 150px;
+    left: 5px;
+    float: none;
+  }
+  .fc-view-container {
+    position: absolute;
+    top: 190px;
   }
 }
 /*----- Event create page -----*/
@@ -1016,7 +1110,7 @@ div.fc-scroller::-webkit-scrollbar-track {
     transform: translateY(-140%);
 }
 .addevent {
-  padding: 20px;
+  padding: 25px;
   border: .5px dashed #777;
   text-align: center;
   color: #777;
@@ -1056,12 +1150,12 @@ div.fc-scroller::-webkit-scrollbar-track {
   padding: 8px;
 }
 .planlists-item {
-  padding: 15px 5px;
+  padding: 10px;
   margin: 0 auto;
   border: .5px solid #ddd;
 }
 .made-planlists-item {
-  padding: 15px 5px;
+  padding: 15px;
   margin: 8px auto;
   border: 1px solid #ddd;
   margin: 0;
@@ -1073,6 +1167,7 @@ div.fc-scroller::-webkit-scrollbar-track {
   border: .5px solid #ddd;
   border-radius: 8px;
   padding: 6px;
+  max-width: 100px;
 }
 .made-planlists-item ul {
   border: 1px solid #ddd;
@@ -1083,15 +1178,11 @@ div.fc-scroller::-webkit-scrollbar-track {
 }
 .planlists-item ul li:nth-child(2) {
   position: relative;
-  height: 60px;
-  width: 81.33px;
-  line-height: 60px;
+  height: 45px;
+  width: 100%;
+  line-height: 45px;
   margin: 0 auto;
-}
-.plan-month {
-  position: absolute;
-  top: 0;
-  left: 0;
+  text-align: center;
 }
 .plan-date {
   position: absolute;
@@ -1101,7 +1192,10 @@ div.fc-scroller::-webkit-scrollbar-track {
 .num-mid {
   font-size: 1.4rem;
   font-weight: bold;
-  margin: 1rem auto;
+  margin: .5rem auto;
+}
+.eventBox .row .col {
+  padding: 0;
 }
 .num-big {
   font-size: 1.8rem;
@@ -1112,6 +1206,7 @@ div.fc-scroller::-webkit-scrollbar-track {
 }
 h4.etitle {
   font-size: 1.2rem;
+  margin: 5px auto;
 }
 p.memo {
   padding-left: 8px;
@@ -1272,6 +1367,10 @@ p.memo {
   width: 95%;
   margin: 0 auto;
 }
+.plandetailBox {
+  width: 95%;
+  margin: 30px auto;
+}
 
 /*----- Tablet -----*/
 @media only screen and (min-width: 601px) {
@@ -1282,6 +1381,10 @@ p.memo {
     margin: 0 auto;
   }
   .planBox {
+    width: 70%;
+    margin: 100px auto;
+  }
+  .plandetailBox {
     width: 70%;
     margin: 100px auto;
   }
@@ -1306,7 +1409,7 @@ p.memo {
     bottom: 70px;
   }
   h4.etitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .infoBox {
     width: 70%;
@@ -1331,7 +1434,7 @@ p.memo {
   .eventBox, .eventcompBox {
     width: 50%;
   }
-  .mypageBox, .planBox {
+  .mypageBox, .planBox, .plandetailBox {
     width: 50%;
   }
   .message {
@@ -1345,7 +1448,7 @@ p.memo {
     bottom: 70px;
   }
   h4.etitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .infoBox {
     width: 50%;
