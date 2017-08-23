@@ -1140,20 +1140,22 @@ public function addresslist()
                 }
 
 
-                //メール送信
-                // $email = new Email('default');
-                // $email->from([SUPPORT_MAIL => FROM_NAME])
-                // ->to($email)
-                // ->subject('【Ajusty】友達申請のお知らせ')
-                // ->emailFormat('text')
-                // ->template('friend')
-                // ->viewVars(['name' => $user['name']])
-                // ->send();
+                $from_user = $this->Users->get($target_user->id);
+
+                if ($from_user['is_mail'] == 0) {
+                  //メール送信
+                  $email = new Email('default');
+                  $email->from([SUPPORT_MAIL => FROM_NAME])
+                  ->to($from_user['email'])
+                  ->subject('【Ajusty】友達申請のお知らせ')
+                  ->emailFormat('text')
+                  ->template('friend')
+                  ->viewVars(['name' => $from_user['name'], 'from_name' => $user['name'], 'body' => $body])
+                  ->send();
+                }
+
 
             }
-
-
-
 
 
         }else{
@@ -1163,7 +1165,8 @@ public function addresslist()
 
         }
 
-        return $this->redirect(['controller' => 'Users', 'action' => 'addresslist']);
+        $this->Flash->success(__('友達申請を行いました'));
+        return $this->redirect(['controller' => 'Plans','action' => 'calendar']);
 
 
        }
@@ -1185,18 +1188,34 @@ public function addresslist()
 
 
         if (empty($image->$type)) {
-            if ($img_no == 2) {
-                $this->response->type('image/png');
-                readfile('img/no-backimage.png');
-            } elseif($img_no == 1) {
                 $this->response->type('image/png');
                 readfile('img/dammy.png');
-            }
         } else {
             $this->response->type($image->$type);
             $this->response->body(stream_get_contents($image->$contents));
         }
-    }
+       }
+
+       public function drawOtherBack($target_id = null)
+       {
+
+        $image = $this->Users->get($target_id, [
+          'contain' => [],
+          ]);
+        $type = 'img_type2';
+        $contents = 'img_data2';
+        // Viewをレンダリングしない
+        $this->autoRender = false;
+
+
+        if (empty($image->$type)) {
+            $this->response->type('image/png');
+            readfile('img/no-backimage.png');
+        } else {
+            $this->response->type($image->$type);
+            $this->response->body(stream_get_contents($image->$contents));
+        }
+       }
 
 
 }

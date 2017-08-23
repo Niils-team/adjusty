@@ -13,7 +13,7 @@
         <p class="right">
 
 
-        <?php echo $this -> Form -> button ( "ブロック", [ "class" => "btn btn delete-btn","name" => 'block', "value" => $from_user->id ] ); ?>
+        <?php echo $this -> Form -> button ( "拒否する", [ "class" => "btn btn delete-btn","name" => 'block', "value" => $from_user->id ] ); ?>
 
         <?php echo $this -> Form -> button ( "承認する", [ "class" => "btn waves-effect waves-light","name" => 'accept', "value" => $from_user->id ] ); ?>
 
