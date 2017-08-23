@@ -35,6 +35,9 @@ h1 {
 p {
   line-height: 2rem;
 }
+.adjusty-text {
+  color: #08233E !important;
+}
 .btn {
   text-transform: none;
   z-index: 0;
@@ -1006,7 +1009,8 @@ div.fc-scroller::-webkit-scrollbar-track {
   .fc-toolbar .fc-right{
     position: fixed;
     top: 87px;
-    z-index: 0;
+    left: 0;
+    z-index: 3;
     width: 101%;
     height: 50px;
     float: none !important;
@@ -1022,19 +1026,50 @@ div.fc-scroller::-webkit-scrollbar-track {
     border-radius: 0;
   }
   .fc-toolbar .fc-left {
-    position: fixed;
+    position: absolute;
     top: 150px;
     right: 0;
+    z-index: 1;
   }
   .fc-toolbar .fc-center {
-    position: fixed;
+    position: absolute;
     top: 150px;
     left: 5px;
     float: none;
+    z-index: 1;
   }
   .fc-view-container {
     position: absolute;
     top: 190px;
+    z-index: 1;
+    width: 100%;
+  }
+  .page-footer {
+    position: absolute;
+    top: 600px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  /* Modal内カレンダー表示 */
+  .modal-content .fc-toolbar .fc-right {
+    top: 0;
+  }
+  .modal-content .fc-toolbar .fc-left {
+    top: 60px;
+  }
+  .modal-content .fc-toolbar .fc-center {
+    top: 60px;
+  }
+  .modal-content .fc-view-container {
+    top: 100px;
+  }
+  .modal-footer {
+    float: none;
+    position: absolute;
+    top: 520px;
+    right: 0;
+    z-index: 1;
   }
 }
 /*----- Event create page -----*/
@@ -1474,6 +1509,14 @@ textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="
 }
 .deg-x-180 {
   transform: rotateY( 180deg );
+}
+.sort-links a {
+  color: #333;
+  font-size: .8rem;
+}
+.sort-links a.activelink {
+  color: #999;
+  pointer-events: none;
 }
 .adjusty-status {
   position: absolute;
