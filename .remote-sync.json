@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "153.127.216.132",
+  "port": "22",
+  "target": "/var/www/html/adjusty.me",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "root",
+  "password": "Adminniils!",
+  "watch": [],
+  "transport": "scp"
+}
