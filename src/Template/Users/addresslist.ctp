@@ -1,4 +1,4 @@
-<?php $this->assign('title', 'アカウントリスト'); ?>
+<?php $this->assign('title', '連絡先一覧'); ?>
 
 
 
@@ -38,7 +38,7 @@
 
             <div class="secondary-content">
             <a href="#!" class="btn list-btn">予定を送る</a><br>
-            <a href="#!" class="btn list-btn">詳細を見る</a>
+            <a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>" class="btn list-btn">詳細を見る</a>
 
             </div>
         </li>
