@@ -15,7 +15,7 @@
     <div class="modal-footer">
 
       <div  id="btn-close-modal" class="close-animatedModal">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn back2-btn">カレンダーを閉じる</a>
+        <a href="#!" class="modal-action modal-close waves-effect btn back2-btn">カレンダーを閉じる</a>
       </div>
 
 
@@ -66,7 +66,7 @@
 <?= $this->Form->create() ?>
 <div class="eventBox">
 
-  <h1 class="center-align sp-h1">予定作成</h1>
+  <h1 class="center-align sp-h1 hide-on-small-only">予定作成</h1>
 
 
 

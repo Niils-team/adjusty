@@ -22,13 +22,17 @@
 <div class="planBox">
   <div class="has-plans">
     <div class="row statusBox">
-      <div class="col s4">
-        <i class="tiny material-icons blue-text deg-x-180">trending_flat</i> 依頼した予定<br>
-        <i class="tiny material-icons red-text">trending_flat</i> 依頼された予定
+      <div class="col s6">
+        <ul class="collection">
+          <li class="collection-item"><i class="left tiny material-icons adjusty-text deg-x-180">call_made</i> 依頼した予定</li>
+          <li class="collection-item"><i class="left tiny material-icons grey-text deg-x-180">call_received</i> 依頼された予定</li>
+        </ul>
       </div>
-      <div class="col s8">
+      <div class="col s6">
         <div class="right">
-          <a href="#">すべて</a> | <a href="#">調整中</a> | <a href="#">確定済</a>
+          <div class="sort-links">
+            <a href="#" class="activelink">すべて</a> | <a href="#">調整中</a> | <a href="#">確定済</a>
+          </div>
         </div>
       </div>
     </div>
@@ -37,8 +41,8 @@
       <?php foreach ($plans as $plan):?>
       <li>
         <div class="collapsible-header collection-item avatar">
-          <i class="tiny material-icons blue-text deg-x-180 plan_arrow">trending_flat</i>
-          <?php echo $this->Html->image('a_icon.png', ['class' => 'circle']); ?>
+          <i class="tiny material-icons adjusty-text deg-x-180 plan_arrow">call_made</i>
+          <?php echo $this->Html->image('a_icon_white.png', ['class' => 'circle']); ?>
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
@@ -93,8 +97,8 @@
 
           <div class="right-align planlists-inner">
             <?= $this->Form->end() ?>
-            <?= $this->Form->postLink(__('詳細を確認'), ['action' => 'detail', $plan['id']], ['class' => 'waves-effect waves-light btn']) ?>
             <?= $this->Form->postLink(__('予定を削除'), ['action' => 'delete', $plan['id']], ['class' => 'btn delete-btn','confirm' => __('この予定を全て削除してもよろしいですか？', $plan['id'])]) ?>
+            <?= $this->Form->postLink(__('詳細を確認'), ['action' => 'detail', $plan['id']], ['class' => 'waves-effect waves-light btn']) ?>
           </div>
 
         </div>
