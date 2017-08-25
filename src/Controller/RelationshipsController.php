@@ -48,6 +48,8 @@ class RelationshipsController extends AppController
 
         $this->set(compact('messages','msg_flag','msg_cnt'));
 
+        // $this->Auth->allow(['request']);
+
     }
 
 
