@@ -1,6 +1,5 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-  <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
   <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
   <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
   <li class="divider"></li>
@@ -43,6 +42,8 @@
 <ul id="dropdown3" class="dropdown-content">
   <li><a href="#!">ヘルプ</a></li>
   <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
+  <li><?php echo $this->Html->link('利用規約', ['controller' => 'Pages', 'action' => 'tos']); ?></li>
+  <li><a href="https://niils.com/privacypolicy" target="_blank">プライバシーポリシー</a></li>
 </ul>
 
 <ul id="dropdown4" class="dropdown-content">
@@ -56,17 +57,13 @@
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
       <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
-      <li>
+      <li class="a-tooltip">
         <a class="dropdown-button" href="#!" data-activates="dropdown4">
           <i class="material-icons" id="friend-icon">perm_contact_calendar</i>
         </a>
+        <div class="a-tooltip-inner">コンタクト管理</div>
       </li>
-      <li>
-        <a class="dropdown-button" href="#!" data-activates="dropdown3">
-          <i class="material-icons" id="info-icon">info_outline</i>
-        </a>
-      </li>
-      <li>
+      <li class="a-tooltip">
         <a class="dropdown-button" href="#!" data-activates="dropdown2">
 
 
@@ -78,6 +75,13 @@
 
           </i>
         </a>
+        <div class="a-tooltip-inner">通知</div>
+      </li>
+      <li class="a-tooltip">
+        <a class="dropdown-button" href="#!" data-activates="dropdown3">
+          <i class="material-icons" id="info-icon">help_outline</i>
+        </a>
+        <div class="a-tooltip-inner">ヘルプ</div>
       </li>
       <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown1">
@@ -104,8 +108,8 @@
       <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
       <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
       <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
-      <li><a href="#!">利用規約</a></li>
-      <li><a href="#!">プライバシーポリシー</a></li>
+      <li><?php echo $this->Html->link('利用規約', ['controller' => 'Pages', 'action' => 'tos']); ?></li>
+      <li><a href="https://niils.com/privacypolicy">プライバシーポリシー</a></li>
       <li><?php echo $this->Html->link('お問い合わせ', ['controller' => 'Users', 'action' => 'contact']); ?></li>
       <li><div class="divider"></div></li>
       <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>

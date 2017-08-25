@@ -46,7 +46,12 @@
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
-          <span class="adjusty-status"><i class="tiny material-icons red-text">lens</i>調整中</span>
+          <span class="adjusty-status">
+            <div class="adjusty-status-inner">
+              <i class="tiny material-icons red-text">lens</i>
+              <div class="adjusty-status-inner-right">調整中</div>
+            </div>
+          </span>
           <a href="#!" class="secondary-content"><i class="material-icons">keyboard_arrow_down</i></a>
         </div>
         <div class="collapsible-body">

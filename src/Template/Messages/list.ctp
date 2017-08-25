@@ -1,6 +1,6 @@
 <?php $this->assign('title', 'お知らせ一覧'); ?>
 <div class="infoBox">
-  <h2>お知らせ一覧</h2>
+  <h1 class="center-align sp-h1 hide-on-small-only">お知らせ一覧</h1>
   <ul class="collection">
   <?php foreach ($messages as $message): ?>
 
@@ -17,13 +17,11 @@
         <span class="pushedtime"><?php echo convert_to_fuzzy_time($message['modified']);?></span>
       </a>
     </li>
-
-  <li class="divider"></li>
-
 <?php endforeach ?>
 
+  <!-- <li class="divider"></li>
   <li class="see-all"><a href="<?= $this->Url->Build(['controller' => 'Messages', 'action' => 'list']); ?>">全ての通知を見る</a></li>
-
+ -->
 <?php else: ?>
 
     <li class="center-align">メッセージはありません</li>

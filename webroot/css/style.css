@@ -855,6 +855,11 @@ ul.collection.collapsible {
   line-height: 1rem;
   margin-bottom: 3px;
 }
+.profBox-text a {
+  background-color: transparent;
+  color: #039be5;
+  padding: 0;
+}
 .mypagetable {
   padding: 10px;
   margin: 0 auto;
@@ -1337,6 +1342,10 @@ p.memo {
   margin: 0 auto;
   min-height: 82.5vh;
 }
+.addresslistBox h1 {
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
 .noaddress {
   padding: 150px 0;
 }
@@ -1396,7 +1405,14 @@ p.memo {
 .infoBox .btn-floating i {
   color: #777;
 }
-
+.infoBox .see-all {
+  text-align: center;
+  padding: 20px;
+}
+.infoBox .see-all a, .infoBox .see-all a:hover,
+.infoBox .see-all a:focus, .infoBox .see-all a:visited {
+  color: #333;
+}
 /*----- Event Edit -----*/
 .planlists-item {
   position: relative;
@@ -1431,7 +1447,7 @@ p.memo {
   display: block;
 }
 .mypageBox {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 }
 .plandetailBox {
@@ -1560,15 +1576,29 @@ textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="
   position: absolute;
   right: 20px;
   top: 10px;
-  font-size: 10px;
+  width: 50px;
+  height: 10px;
+}
+.adjusty-status-inner {
+  position: relative;
+  width: 50px;
+  height: 10px;
 }
 .adjusty-status i {
   font-size: .5rem;
   float: none;
   position: absolute;
-  top: 9px;
-  right: 10px;
-  line-height: 1;
+  top: 0;
+  left: 0;
+  line-height: 10px;
+  width: 15px;
+}
+.adjusty-status-inner-right {
+  font-size: .5rem;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  line-height: 10px;
 }
 .statusList.collection .collection-item.avatar {
   padding-left: 110px;

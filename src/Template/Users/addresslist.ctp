@@ -1,7 +1,5 @@
 <?php $this->assign('title', '連絡先一覧'); ?>
 
-
-
 <?php if ($friends_cnt == 0): ?>
 
   <!-- 繋がっているアカウントがない場合 -->
@@ -20,6 +18,7 @@
 
 
   <div class="addresslistBox">
+    <h1 class="sp-h1">連絡先一覧</h1>
     <div class="has-address">
       <ul class="collection">
 
@@ -29,20 +28,16 @@
             <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $friend->target_id ]); ?>" class="circle" />
 
             <span class="title">
-            【名前】<?= h($friend->user->name) ?>
+            <?= h($friend->user->name) ?>
             </span>
 
             <p class="companyName">
-            【会社名】<?= h($friend->user->company_name) ?>
+            <?= h($friend->user->company_name) ?>
             </p>
 
             <div class="secondary-content">
-            <a href="#!" class="btn list-btn">予定を送る</a><br>
-            <a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>" class="btn list-btn">詳細を見る</a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 28b80383aaa0521d826b7509c3b11c374a4b8cab
+              <a href="#!" class="btn list-btn">予定を送る</a><br>
+              <a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>" class="btn list-btn">詳細を見る</a>
             </div>
         </li>
 

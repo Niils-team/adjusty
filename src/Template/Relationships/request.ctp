@@ -1,14 +1,14 @@
 <?php $this->assign('title', '承認リクエスト'); ?>
 <div class="infoBox">
-  <h2>承認リクエスト</h2>
+  <h2 class="center-align sp-h1 hide-on-small-only">承認リクエスト</h2>
   <ul class="collection">
   <?= $this->Form->create() ?>
     <li class="collection-item avatar">
         <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $from_user->id ]); ?>" class="circle" />
 
-        <span class="truncate active-info">名前 <?= h($from_user->name) ?></span>
+        <span class="truncate active-info"><?= h($from_user->name) ?></span>
 
-        <span class="pushedtime">所属 <?= h($from_user->company_name) ?></span>
+        <span class="pushedtime"><?= h($from_user->company_name) ?></span>
 
         <p class="right">
 
