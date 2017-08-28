@@ -27,16 +27,16 @@ class UsersController extends AppController
         $this->loadModel('Messages');
 
         $messages = $this->Messages->find()
-        ->where(['user_id' => $this->Auth->user('id')])
+        ->where(['user_id' => $this->Auth->user('id'),'Messages.is_active' => 0])
         ->contain(['Users'])
         ->all();
 
         $msg_flag = $this->Messages->find()
-        ->where(['user_id' =>$this->Auth->user('id'),'is_read' => 0])
+        ->where(['user_id' =>$this->Auth->user('id'),'is_read' => 0,'Messages.is_active' => 0])
         ->count();
 
         $msg_cnt = $this->Messages->find()
-        ->where(['user_id' => $this->Auth->user('id')])
+        ->where(['user_id' => $this->Auth->user('id'),'Messages.is_active' => 0])
         ->count();
 
         $this->set(compact('messages','msg_flag','msg_cnt'));

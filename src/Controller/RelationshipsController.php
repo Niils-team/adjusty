@@ -34,16 +34,16 @@ class RelationshipsController extends AppController
         $this->loadModel('Messages');
 
         $messages = $this->Messages->find()
-        ->where(['user_id' => $this->Auth->user('id')])
+        ->where(['user_id' => $this->Auth->user('id'),'Messages.is_active' => 0])
         ->contain(['Users'])
         ->all();
 
         $msg_flag = $this->Messages->find()
-        ->where(['user_id' =>$this->Auth->user('id'),'is_read' => 0])
+        ->where(['user_id' =>$this->Auth->user('id'),'is_read' => 0,'Messages.is_active' => 0])
         ->count();
 
         $msg_cnt = $this->Messages->find()
-        ->where(['user_id' => $this->Auth->user('id')])
+        ->where(['user_id' => $this->Auth->user('id'),'Messages.is_active' => 0])
         ->count();
 
         $this->set(compact('messages','msg_flag','msg_cnt'));
@@ -56,12 +56,7 @@ class RelationshipsController extends AppController
     public function request($id = null, $message_id = null)
     {
 
-      //既読フラグ
-      $this->loadModel('Messages');
-      $articlesTable = TableRegistry::get('Messages');
-      $article = $articlesTable->get($message_id);
-      $article->is_read = 1;
-      $articlesTable->save($article);
+
 
     //リクエスト一覧
     $this->loadModel('Relationships');
@@ -87,6 +82,14 @@ class RelationshipsController extends AppController
 
 
     if ($this->request->is(['post'])) {
+
+      //既読フラグ
+      $this->loadModel('Messages');
+      $articlesTable = TableRegistry::get('Messages');
+      $article = $articlesTable->get($message_id);
+      $article->is_read = 1;
+      $article->is_active = 1;
+      $articlesTable->save($article);
 
         if ($this->request->data('block')) {
           // $articlesTable = TableRegistry::get('Relationships');
@@ -149,6 +152,39 @@ class RelationshipsController extends AppController
       $target_user = $this->Users->get($id);
       $this->set(compact('target_user'));
 
+    }
+
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+
+        $Relationship = $this->Relationships->get($id);
+
+        $Relationship_target = $this->Relationships->find()
+        ->where(['user_id' => $Relationship->target_id, 'target_id' => $this->Auth->user('id')])
+        ->first();
+
+  
+
+        if ($this->Auth->user('id') != $Relationship->user_id) {
+          return $this->redirect(['controller' => 'Plans','action' => 'calendar']);
+        }
+
+
+
+        if ($this->Relationships->delete($Relationship)) {
+
+          $this->Relationships->delete($Relationship_target);
+
+
+            $this->Flash->success(__('連携を解除しました'));
+
+
+        } else {
+            $this->Flash->error(__('The calender could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['controller' => 'Plans','action' => 'calendar']);
     }
 
 }

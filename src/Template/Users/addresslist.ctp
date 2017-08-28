@@ -44,7 +44,7 @@
             <!-- Dropdown Structure -->
             <ul id='friendmenu<?php echo $i; ?>' class='dropdown-content'>
               <li><a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>">詳細を見る</a></li>
-              <li>連携を解除</li>
+              <li><?= $this->Form->postLink(__('連携を解除'), ['controller'=>'Relationships','action' => 'delete',$friend->id], ['confirm' => __('連携を解除しますか？')]) ?></li>
             </ul>
             <div class="right-align"><a href="#!" class="btn adjustBtn">予定を送る</a></div>
         </li>
