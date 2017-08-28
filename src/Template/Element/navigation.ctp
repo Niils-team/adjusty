@@ -13,7 +13,6 @@
   <?php foreach ($messages as $message): ?>
 
   <li>
-
   <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $message->from_id ]); ?>" class="circle left" />
 
 

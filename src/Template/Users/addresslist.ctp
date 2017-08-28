@@ -19,11 +19,13 @@
 
   <div class="addresslistBox">
     <h1 class="sp-h1">連絡先一覧</h1>
+    <p class="right-align">
+      <a href="#add" class="waves-effect waves-light btn modal-trigger">連絡先を追加</a>
+    </p>
     <div class="has-address">
       <ul class="collection">
 
-
-        <?php foreach ($friends as $friend): ?>
+        <?php $i=0; foreach ($friends as $friend): ?>
         <li class="collection-item avatar">
             <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $friend->target_id ]); ?>" class="circle" />
 
@@ -36,18 +38,20 @@
             </p>
 
             <div class="secondary-content">
-              <a href="#!" class="btn list-btn">予定を送る</a><br>
-              <a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>" class="btn list-btn">詳細を見る</a>
+              <!-- Dropdown Trigger -->
+              <div class="frienddetail right-align"><a class='dropdown-button' href='#' data-activates='friendmenu<?php echo $i; ?>'><i class="material-icons">more_vert</i></a></div>
             </div>
+            <!-- Dropdown Structure -->
+            <ul id='friendmenu<?php echo $i; ?>' class='dropdown-content'>
+              <li><a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>">詳細を見る</a></li>
+              <li>連携を解除</li>
+            </ul>
+            <div class="right-align"><a href="#!" class="btn adjustBtn">予定を送る</a></div>
         </li>
 
         <?php endforeach ?>
 
       </ul>
-
-      <p class="center-align">
-        <a href="#add" class="waves-effect waves-light btn modal-trigger">連絡先を追加</a>
-      </p>
 
     </div>
 

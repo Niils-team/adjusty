@@ -807,7 +807,7 @@ ul.collection.collapsible {
   /*position: relative;*/
   height: 200px;
   width: 100%;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 .mypageBack img {
   height: 200px;
@@ -826,7 +826,7 @@ ul.collection.collapsible {
 .mypageImg {
   height: auto;
   position: absolute;
-  top: 220px;
+  top: 200px;
   left: 0;
   right: 0;
   z-index: 2;
@@ -1357,6 +1357,7 @@ p.memo {
 }
 .has-address ul.collection {
   border: 1px solid #e0e0e0;
+  overflow: inherit;
 }
 .has-address ul.collection li.collection-item {
   border-bottom: 1px solid #e0e0e0;
@@ -1364,6 +1365,9 @@ p.memo {
 .has-address .collection .collection-item.avatar .secondary-content {
   top: 9px;
   right: 9px;
+}
+.frienddetail .dropdown-button i {
+  color: #999;
 }
 .companyName {
   font-size: .8rem;
@@ -1382,6 +1386,21 @@ p.memo {
   background-color: #eee;
   color: #333;
 }
+.adjustBtn {
+  margin-bottom: 5px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #eee;
+  color: #333;
+  font-size: .8rem;
+  margin-right: 20px;
+}
+.adjustBtn:hover, .adjustBtn:focus,
+.adjustBtn:visited {
+  background-color: #eee;
+  color: #333;
+}
+
 @media screen and (max-width:992px) {
   .addresslistBox {
     width: 100%;
