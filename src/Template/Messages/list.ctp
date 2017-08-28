@@ -24,9 +24,13 @@
  -->
 <?php else: ?>
 
-    <li class="center-align">メッセージはありません</li>
+    <li class="noinfo center-align">お知らせはありません</li>
 
 <?php endif ?>
   </ul>
+
+  <?php if ($msg_cnt > 10): ?>
   <p class="center-align"><a href="#" class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons">keyboard_arrow_down</i></a></p>
+  <?php endif ?>
+
 </div>

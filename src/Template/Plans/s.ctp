@@ -47,7 +47,7 @@ $this->assign('title', '予定の詳細');
      ?>
   </p>
 
-  <h5 class="white-text grey darken-1 event-step">候補日時</h5>
+  <h5 class="event-step">候補日時</h5>
   <div class="planlists">
     <?php
     $i = 0;

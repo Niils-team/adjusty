@@ -165,6 +165,12 @@ ul#dropdown2 li a {
 }
 ul#dropdown2 li.see-all {
   text-align: center;
+  padding: 0;
+  line-height: 1;
+  min-height: 5px;
+}
+ul#dropdown2 li.see-all a {
+  width: 100%;
 }
 .active-info {
   font-weight: bold;
@@ -1391,13 +1397,8 @@ p.memo {
 .infoBox h2 {
   font-size: 2rem;
 }
-.infoBox .collection {
-  border-top: .5px solid #ddd;
-  border-left: .5px solid #ddd;
-  border-right: .5px solid #ddd;
-}
 .infoBox .collection li.collection-item {
-  border-bottom: .5px solid #ddd;
+  border: .5px solid #ddd;
 }
 .infoBox .collection li.collection-item a {
   color: #333;
@@ -1412,6 +1413,10 @@ p.memo {
 .infoBox .see-all a, .infoBox .see-all a:hover,
 .infoBox .see-all a:focus, .infoBox .see-all a:visited {
   color: #333;
+}
+li.noinfo {
+  border: none;
+  padding: 20px;
 }
 /*----- Event Edit -----*/
 .planlists-item {
@@ -1651,7 +1656,7 @@ li.a-tooltip {
   color: #fff;
   background: #9b9b9b;
   line-height: 1;
-  width: 115px;
+  width: 120px;
   text-align: center;
   font-size: .8rem;
 }

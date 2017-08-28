@@ -94,7 +94,7 @@
     </p>
   </div>
   <br>
-  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>
 
       <?= $this->Form->button('送信', array(
       'div' => false,

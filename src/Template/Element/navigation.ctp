@@ -54,9 +54,25 @@
   <div class="nav-wrapper container">
     <a id="logo-container" href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'top']); ?>" class="brand-logo">Adjusty</a>
     <ul class="right hide-on-med-and-down">
-      <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
-      <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
-      <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
+      <li class="a-tooltip">
+        <a href="<?php echo $this->Url->Build(['controller' => 'Plans', 'action' => 'top']); ?>">
+          <i class="material-icons" id="friend-icon">home</i>
+        </a>
+        <div class="a-tooltip-inner">トップ</div>
+      </li>
+      <li class="a-tooltip">
+        <a href="<?php echo $this->Url->Build(['controller' => 'Events', 'action' => 'create']); ?>">
+          <i class="material-icons" id="friend-icon">playlist_add</i>
+        </a>
+        <div class="a-tooltip-inner">新規予定作成</div>
+      </li>
+      <li class="a-tooltip">
+        <a href="<?php echo $this->Url->Build(['controller' => 'Plans', 'action' => 'list']); ?>">
+          <i class="material-icons" id="friend-icon">playlist_add_check</i>
+        </a>
+        <div class="a-tooltip-inner">予定の確認・修正</div>
+      </li>
+      <li></li>
       <li class="a-tooltip">
         <a class="dropdown-button" href="#!" data-activates="dropdown4">
           <i class="material-icons" id="friend-icon">perm_contact_calendar</i>
