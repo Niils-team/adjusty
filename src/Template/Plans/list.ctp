@@ -1,9 +1,17 @@
 <?php $this->assign('title', 'ホーム'); ?>
+
+
 <div class="adjusty-extended-nav">
   <div class="container">
     <div class="row">
       <!-- 依頼を受けた＆未読の案件があれば件数とともに表示 -->
-      <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>" class="indicator">調整リスト<span class="badge red">4</span></a></div>
+      <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>" class="indicator">調整リスト
+
+      <?php if ($plan_fix_cnt != 0): ?>
+        <span class="badge red"><?php echo $plan_fix_cnt ?></span>
+      <?php endif ?>
+
+      </a></div>
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'calendar']); ?>">カレンダー</a></div>
     </div>
   </div>
@@ -19,6 +27,7 @@
 <?php else: ?>
   <!-- プランがあった場合 -->
 
+
 <div class="planBox">
   <div class="has-plans">
     <div class="row statusBox">
@@ -31,7 +40,11 @@
       <div class="col s6">
         <div class="right">
           <div class="sort-links">
-            <a href="#" class="activelink">すべて</a> | <a href="#">調整中</a> | <a href="#">確定済</a>
+
+            <a href="<?php echo $this->Url->build(['action'=>'list']); ?>">すべて</a> |
+            <a href="<?php echo $this->Url->build(['action'=>'list','adjusting']); ?>">調整中</a> |
+            <a href="<?php echo $this->Url->build(['action'=>'list','fixed']); ?>">確定済</a>
+
           </div>
         </div>
       </div>
@@ -39,17 +52,36 @@
     <ul class="collection collapsible statusList" data-collapsible="accordion">
 
       <?php foreach ($plans as $plan):?>
+
       <li>
         <div class="collapsible-header collection-item avatar">
+
+        <?php if ($plan['user_id'] == $user['id']): ?>
           <i class="tiny material-icons adjusty-text deg-x-180 plan_arrow">call_made</i>
           <?php echo $this->Html->image('a_icon_white.png', ['class' => 'circle']); ?>
+        <?php else: ?>
+          <i class="tiny material-icons adjusty-text deg-x-180 plan_arrow">call_received</i>
+          <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $plan->user_id ]); ?>" class="circle" />
+        <?php endif ?>
+          
+          
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
+          <?php if ($plan['target_id'] == $user['id']): ?>
+              <p class="pushedtime">作成者：<?php echo $plan->user->name ?></p>
+          <?php endif ?>
+          
           <span class="adjusty-status">
             <div class="adjusty-status-inner">
               <i class="tiny material-icons red-text">lens</i>
-              <div class="adjusty-status-inner-right">調整中</div>
+              
+              <?php if ($plan['is_fixed'] == 0): ?>
+                <div class="adjusty-status-inner-right">調整中</div>             
+              <?php else: ?>
+                <div class="adjusty-status-inner-right">確定済</div>   
+              <?php endif ?>
+              
             </div>
           </span>
           <a href="#!" class="secondary-content"><i class="material-icons">keyboard_arrow_down</i></a>
@@ -103,7 +135,12 @@
           <div class="right-align planlists-inner">
             <?= $this->Form->end() ?>
             <?= $this->Form->postLink(__('予定を削除'), ['action' => 'delete', $plan['id']], ['class' => 'btn delete-btn','confirm' => __('この予定を全て削除してもよろしいですか？', $plan['id'])]) ?>
-            <?= $this->Form->postLink(__('詳細を確認'), ['action' => 'detail', $plan['id']], ['class' => 'waves-effect waves-light btn']) ?>
+            <?php if ($plan['user_id'] == $user['id']): ?>
+              <?= $this->Form->postLink(__('予定の編集'), ['action' => 'detail', $plan['id']], ['class' => 'waves-effect waves-light btn']) ?>
+            <?php else: ?>
+              <a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'s',$plan->code]); ?>" class="waves-effect waves-light btn modal-trigger">詳細を確認</a>
+            <?php endif ?>
+            
           </div>
 
         </div>

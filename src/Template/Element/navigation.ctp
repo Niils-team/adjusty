@@ -15,8 +15,11 @@
   <li>
   <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $message->from_id ]); ?>" class="circle left" />
 
-
-  <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request",$message->from_id,$message->id]); ?>" class="right">
+  <?php if ($message->kind_id == 1): ?>
+      <a href="<?= $this->Url->build(["controller" => "Relationships", "action" => "request",$message->from_id,$message->id]); ?>" class="right">
+    <?php elseif ($message->kind_id == 2): ?>
+      <a href="<?= $this->Url->build(["controller" => "Plans", "action" => "list"]); ?>" class="right">
+  <?php endif ?>
 
   <?=h($message->user->name) ?>さんから<?=h($message->title) ?><br>
   <span class="pushedtime"><?php echo convert_to_fuzzy_time($message['modified']);?></span>

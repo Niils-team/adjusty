@@ -147,7 +147,7 @@ public function entryHidden()
     $this->set('_serialize', ['user']);
 }
 
-public function activation($ac = null)
+public function activation($ac = null, $ac_from = null)
 {
     $this->viewBuilder()->layout('before');
     $user_count = $this->Users->find()
@@ -190,7 +190,8 @@ if ($this->request->is(['patch', 'post', 'put'])) {
         $this->Auth->setUser($user);
         $this->Flash->success(__('本登録完了しました'));
 
-                //送信完了メール
+
+        //送信完了メール
         $email = new Email('default');
         $email->from([MEMBER_MAIL => FROM_NAME])
         ->to($user['email'])
@@ -199,6 +200,34 @@ if ($this->request->is(['patch', 'post', 'put'])) {
         ->template('entry_comp')
         ->viewVars(['name' => $user['name']])
         ->send();
+
+        //誘いがあった場合、メッセージ追加
+
+        // 誘い元のユーザを検索
+      $from_user = $this->Users->find()
+      ->where(['activation_code' => $ac_from])
+      ->first();
+
+      if ($from_user) {
+        # 誘いがあった場合、メッセージと友達データ追加
+
+            // 友達データ
+            $relationshipsTable = TableRegistry::get('Relationships');
+            $relationship = $relationshipsTable->newEntity();
+            $relationship->user_id = $from_user->id;
+            $relationship->target_id = $user->id;
+            $relationshipsTable->save($relationship);
+
+
+            // メッセージ
+            $articlesTable = TableRegistry::get('Messages');
+            $article = $articlesTable->newEntity();
+            $article->from_id = $from_user->id;
+            $article->user_id = $user->id;
+            $article->kind_id = 1;
+            $article->title = '承認リクエストが届いています。';
+            $articlesTable->save($article);
+      }
 
         return $this->redirect($this->Auth->redirectUrl());
     }
@@ -1047,14 +1076,12 @@ public function addresslist()
 {
 
      // ログインデータ取得
-
     $user = $this->Users->get($this->Auth->user('id'), [
       'contain' => [],
       ]);
 
     //友達一覧
     $this->loadModel('Relationships');
-
     $friends = $this->Relationships->find()
     ->where(['user_id' =>$user['id'],'accept_flag' => 1])
     ->contain(['Users'])
@@ -1082,7 +1109,6 @@ public function addresslist()
 
 
         // 友達追加
-
         $friend_result = $this->Relationships->find()
         ->where(['target_id' => $target_user->id])
         ->first();
@@ -1097,15 +1123,14 @@ public function addresslist()
 
         }else{
 
+          // $user = $this->Users->get($this->Auth->user);
+
             $relationshipsTable = TableRegistry::get('Relationships');
             $relationship = $relationshipsTable->newEntity();
             $relationship->user_id = $this->Auth->user('id');
             $relationship->target_id = $target_user->id;
             $relationshipsTable->save($relationship);
-
-        }
-
-
+          }
 
         if ($friend_result['block_flag'] == 0) {
 
@@ -1160,7 +1185,47 @@ public function addresslist()
 
         }else{
 
-            //会員外
+          // 追加する人が会員外の場合
+
+          $sendto = $email;
+          //アクティベーション生成
+          $activation_code = md5($sendto.time());
+
+          $articlesTable = TableRegistry::get('Users');
+          $article = $articlesTable->newEntity();
+          $article->email = $email;
+          $article->activation_code = $activation_code;
+          
+
+          if ($articlesTable->save($article)) {
+
+            //URL取得
+            $url = Router::url('/users/activation/', true);
+
+            //welcomメール送信処理
+            $email = new Email('default');
+            $email->from([MEMBER_MAIL => FROM_NAME])
+            ->to($sendto)
+            ->subject('【Adjusty】登録のお誘い')
+            ->emailFormat('text')
+            ->template('welcome_friend')
+            ->viewVars([
+              'url' => $url,
+              'value' => $sendto,
+              'activation_code' => $activation_code,
+              'activation_code_from' => $user['activation_code'],
+              'body' => $body,
+              'from_name' => $user['name']
+              ])
+            ->send();
+
+                // $this->Flash->success(__('登録アドレスにメールを送信しました'));
+
+              // return $this->redirect(['action' => 'index']);
+          } else {
+            $this->Flash->error(__('エラーが発生しました'));
+          }
+
 
 
         }

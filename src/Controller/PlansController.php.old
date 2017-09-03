@@ -211,19 +211,22 @@ class PlansController extends AppController
 
       $this->set('plan_cnt', $plan_cnt);
 
+
+
       if ($plan_cnt != 0) {
 
       $plans = $this->Plans->find()
-      ->where(["user_id = " => $user['id']])
-      ->where(["is_active = 0"])
-      ->order(['created' => 'DESC'])
-      ->contain(['Events'])
+      ->where([
+        "Plans.user_id" => $user['id'],
+        "Plans.is_active = 0"
+        ])
+      ->order(['Plans.created' => 'DESC'])
+      ->contain(['Users','Events'])
       ->all();
 
-      $this->set('plans', $plans);
-
-
       }
+
+      $this->set('plans', $plans);
 
     }
 
@@ -237,11 +240,18 @@ class PlansController extends AppController
         'contain' => []
         ]);
 
+        if ($plan['user_id'] != $this->Auth->user('id')) {
+          return $this->redirect(['action' => 'list']);
+        }
+
+
 
         $this->loadModel('Events');
         $events = $this->Events->find()
         ->where(["plan_id = " => $plan_id])
         ->all();
+
+
 
         $this->set('events', $events);
         $this->set('plan', $plan);

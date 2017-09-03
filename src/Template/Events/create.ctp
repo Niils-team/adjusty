@@ -72,6 +72,15 @@
 
   <div class="row"><!--STEP1 START -->
 
+  <?php if (!empty($target_user)): ?>
+      <h5 class="event-step">送信先</h5>
+      <div class="row">
+<img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $target_user->id ]); ?>" class="circle" />
+<?php echo $target_user->name ?>さん
+        </div>
+      
+<?php endif ?>
+
       <h5 class="event-step">予定名とメモ</h5>
       <div class="row">
 
@@ -124,20 +133,11 @@
 
   </div><!--STEP2 END -->
 
-  <div class="row"><!--STEP3 STRAT -->
-<!--     <h5 class="event-step">送信先</h5>
-      <div class="row">
-        <div class="input-field col s12">
-          <p>
-            <input name="radioBtn" type="radio" id="to_url" />
-            <label for="to_url">URLで送信</label>
-          </p>
-          <p>
-            <input name="radioBtn" type="radio" id="to_friend" />
-            <label for="to_friend">連絡先から選ぶ</label>
-          </p>
-        </div>
-      </div> -->
+  <div class="row">
+  
+
+
+
 
       <div class="center-align create-btn">
          <?= $this->Form->button('予定を作成', array(
@@ -147,7 +147,9 @@
              )); ?>
       </div>
 
- </div><!--STEP3 END -->
+ </div>
+
+ <!--STEP3 END -->
  <!-- Frient list Modal START -->
 <!--  <ul class="collection">
    <li class="collection-item avatar">

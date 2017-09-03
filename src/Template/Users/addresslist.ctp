@@ -35,6 +35,7 @@
 
             <p class="companyName">
             <?= h($friend->user->company_name) ?>
+
             </p>
 
             <div class="secondary-content">
@@ -46,7 +47,7 @@
               <li><a href="<?php echo $this->Url->build(['controller'=>'Relationships', 'action'=>'friendprofile', $friend->user->id]); ?>">詳細を見る</a></li>
               <li><?= $this->Form->postLink(__('連携を解除'), ['controller'=>'Relationships','action' => 'delete',$friend->id], ['confirm' => __('連携を解除しますか？')]) ?></li>
             </ul>
-            <div class="right-align"><a href="#!" class="btn adjustBtn">予定を送る</a></div>
+            <div class="right-align"><a href="<?= $this->Url->build(["controller" => "Events", "action" => "create", $friend->user->activation_code ]); ?>" class="btn adjustBtn">予定を送る</a></div>
         </li>
 
         <?php endforeach ?>

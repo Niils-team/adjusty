@@ -8,7 +8,13 @@ $this->assign('title', 'ホーム');
   <div class="container">
     <div class="row">
       <!-- 調整中案件があれば件数とともに表示 -->
-      <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>">調整リスト<span class="badge red">4</span></a></div>
+      <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>">調整リスト
+      
+      <?php if ($plan_fix_cnt != 0): ?>
+        <span class="badge red"><?php echo $plan_fix_cnt ?></span>
+      <?php endif ?>
+
+      </div>
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'calendar']); ?>" class="indicator">カレンダー</a></div>
     </div>
   </div>

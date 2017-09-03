@@ -22,6 +22,20 @@ class PlansController extends AppController
       parent::initialize();
       $this->loadComponent('Flash');
       $this->loadModel('Users');
+
+      if ($this->Auth->user()) {
+
+      $plan_fix_cnt = $this->Plans->find()
+      ->where([
+        "user_id" => $this->Auth->user('id'),
+        "is_fixed" => 0,
+
+        ])
+      ->count();
+
+      $this->set('plan_fix_cnt',$plan_fix_cnt);
+
+      }
     }
 
     public function beforeFilter(\Cake\Event\Event $event)
@@ -228,7 +242,7 @@ class PlansController extends AppController
         }
     }
 
-    public function list()
+    public function list($mode = null)
     {
 
       $this->loadModel('Users');
@@ -244,17 +258,52 @@ class PlansController extends AppController
 
       if ($plan_cnt != 0) {
 
-      $plans = $this->Plans->find()
-      ->where(["user_id = " => $user['id']])
-      ->where(["is_active = 0"])
-      ->order(['created' => 'DESC'])
-      ->contain(['Events'])
-      ->all();
+            switch ($mode) {
+                case 'adjusting':
+                $plans = $this->Plans->find()
+                ->where([
+                  'OR' => [ ["user_id" => $user['id']], ["target_id" => $user['id']] ]
+                  ])
+                ->where(["Plans.is_active" => 0])
+                ->where(["Plans.is_fixed" => 0])
+                ->order(['Plans.created' => 'DESC'])
+                ->contain(['Events','Users'])
+                ->all();
+                break;
 
-      $this->set('plans', $plans);
-
+                case 'fixed':
+                $plans = $this->Plans->find()
+                ->where([
+                  'OR' => [ ["user_id" => $user['id']], ["target_id" => $user['id']] ]
+                  ])
+                ->where(["Plans.is_active" => 0])
+                ->where(["Plans.is_fixed" => 1])
+                ->order(['Plans.created' => 'DESC'])
+                ->contain(['Events','Users'])
+                ->all();
+                
+                break;
+              
+                default:
+                $plans = $this->Plans->find()
+                ->where([
+                  'OR' => [ ["user_id" => $user['id']], ["target_id" => $user['id']] ]
+                  ])
+                ->where(["Plans.is_active" => 0])
+                ->order(['Plans.created' => 'DESC'])
+                ->contain(['Events','Users'])
+                ->all();
+                break;
+            }
 
       }
+
+      $this->set('plans', $plans);
+      $this->set('user', $user);
+      $this->set('mode', $mode);
+
+
+      
 
     }
 
@@ -267,6 +316,10 @@ class PlansController extends AppController
         $plan = $this->Plans->get($plan_id, [
         'contain' => []
         ]);
+
+        if ($plan['user_id'] != $this->Auth->user('id')) {
+          return $this->redirect(['action' => 'list']);
+        }
 
 
         $this->loadModel('Events');

@@ -29,6 +29,8 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');
 
+        $this->loadComponent('DataArray');
+
         $this->Session = $this->request->session();
 
          //認証

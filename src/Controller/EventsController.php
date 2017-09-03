@@ -42,12 +42,21 @@ class EventsController extends AppController
 
   }
 
-  public function create()
+  public function create($activation_code = null)
   {
     $this->loadModel('Users');
     $user = $this->Users->get($this->Auth->user('id'), [
     'contain' => []
     ]);
+
+    // 連絡先から選んでいる場合
+    if ($activation_code) {
+        $target_user = $this->Users->find()
+        ->where(["activation_code" => $activation_code])
+        ->first();
+
+        $this->set('target_user', $target_user);
+    }
 
     $event = $this->Events->newEntity();
     $this->set('event', $event);
@@ -62,6 +71,13 @@ class EventsController extends AppController
        $Plans->title = $this->request->data['title'];
        $Plans->memo = $this->request->data['memo'];
        $Plans->code = uniqid(rand(1000, 9999));
+
+       // 連絡先から選んでいる場合
+       if ($target_user) {
+        $Plans->target_id = $target_user->id;
+       }else{
+        $Plans->target_id = 0;
+       }
 
       if ($PlansTable->save($Plans)) {
 
@@ -78,6 +94,14 @@ class EventsController extends AppController
               $Events = $EventsTable->newEntity();
               $Events->user_id = $this->Auth->user('id');
               $Events->plan_id = $Plans->id;
+
+              // 連絡先から選んでいる場合
+              if ($target_user) {
+              $Events->target_id = $target_user->id;
+              }else{
+              $Events->target_id = 0;
+              }
+
               $Events->title = $this->request->data($event_title);
               $Events->start = date("Y-m-d H:i:s",$this->request->data($start));
               // $Events->start = new Time(date("Y-m-d H:i:s",$this->request->data($start)));
@@ -91,6 +115,39 @@ class EventsController extends AppController
                 }
 
               $EventsTable->save($Events);
+
+              // 相手が友達だった場合
+              if ($target_user) {
+
+                // メッセージの追加
+                $articlesTable = TableRegistry::get('Messages');
+                $article = $articlesTable->newEntity();
+                $article->from_id = $this->Auth->user('id');
+                $article->user_id = $target_user->id;
+                $article->kind_id = 2;
+                $article->title = '予定の調整依頼が届いています。';
+                $articlesTable->save($article);
+
+                //メール送信処理
+                  if ($target_user['is_mail'] == 0) {
+                  $email = new Email('default');
+                  $email->from([MEMBER_MAIL => FROM_NAME])
+                        ->to($this->Auth->user('email'))
+                        ->subject('【Adjusty】予定の調整依頼が届いています')
+                        ->emailFormat('text')
+                        ->template('created_friend')
+                        ->viewVars([
+                          'name' => $target_user['name'],
+                          'url' => EVENT_URL.$Plans->code,
+                          'from_name' => $user['name']
+                          ])
+                        ->send();
+                  }
+
+              }
+
+
+
             }
 
             //メール送信処理

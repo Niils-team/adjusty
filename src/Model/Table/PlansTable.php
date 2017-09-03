@@ -46,9 +46,11 @@ class PlansTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+
         $this->hasMany('Calenders', [
             'foreignKey' => 'plan_id'
         ]);
+        
         $this->hasMany('Events', [
             'foreignKey' => 'plan_id',
             'dependent' => true,
