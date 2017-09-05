@@ -94,14 +94,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 </body>
 <script>
-  var button = document.getElementById('copyButton');
-  button.addEventListener('click', function(){
-    var yourCode = document.getElementById('yourCode');
-    var range = document.createRange();
-    range.selectNode(yourCode);
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    alert('コピーしました');
-  });
+  // フォーム要素を得る
+  var form = document.forms.targetForm;
+  // 対象のテキスト入力要素の中身をコピーするメソッド
+  var copyTextInTarget = function(target) {
+  // 要素に含まれる文字列全てを選択状態にする
+  target.selectionStart = 0;
+  target.selectionEnd = target.value.length;
+  // コピーしたい文字列がある要素をフォーカス
+  target.focus();
+  // コピーを実行する。失敗した場合はログにメッセージを表示。
+  if (!document.execCommand('copy')) {
+      console.log("コピーに失敗しました。");
+  }
+  // フォーカスを外す
+  target.blur();
+  };
+  // ボタン（copy1）がクリックされた時
+  form.copyButton.addEventListener("click", function(e) {
+      // ボタン本来の動作をブロック
+      e.preventDefault();
+      // フォームの中にあるinput要素を取得
+      var input = form.inputArea;
+      // 生成と同時にコピーする
+      copyTextInTarget(input);
+      alert('コピーしました');
+  }, false);
 </script>
 </html>
