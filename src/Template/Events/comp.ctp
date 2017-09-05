@@ -9,9 +9,15 @@
 
 <div class="eventcompBox">
   <h1 class="center-align sp-h1">作成完了</h1>
-  <div class="completeCircle valign-wrapper center-align">
-    <i class="center-block large material-icons teal-text text-accent-3">done</i>
+  <div class="svgBox">
+    <svg viewbox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" />
+      <polyline points="50,20 30,40 70,80"></polyline>
+    </svg>
   </div>
+  <!-- <div class="completeCircle valign-wrapper center-align">
+    <i class="center-block large material-icons teal-text text-accent-3">done</i>
+  </div> -->
   <p class="center-align"><?php echo $plan['title']; ?>&nbsp;の予定が作成されました。予定閲覧ページのURLをお相手にお知らせください。</p>
   <div class="row urlShare">
     <form class="col s12" name="targetForm">

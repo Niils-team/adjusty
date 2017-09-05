@@ -155,10 +155,10 @@ ul#dropdown2 li.divider {
   padding: 0;
 }
 ul#dropdown2 li img {
-  width: 40px;
+  width: 13.33%;
 }
 ul#dropdown2 li a {
-  width: 245px;
+  width: 86.66%;
   font-size: 12px;
   color: #333;
   padding: 5px;
@@ -247,7 +247,7 @@ ul#dropdown3 li > a, ul#dropdown4 li > a {
   left: 0;
   width: 100%;
   text-align: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 @keyframes fadeIn {
@@ -1059,7 +1059,12 @@ div.fc-scroller::-webkit-scrollbar-track {
   .fc-toolbar .fc-right{
     position: absolute;
     top: 100px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     z-index: 1;
     width: 100%;
     height: 50px;
@@ -1091,8 +1096,14 @@ div.fc-scroller::-webkit-scrollbar-track {
   .fc-view-container {
     position: absolute;
     top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     z-index: 1;
-    width: 100%;
+    width: 99%;
   }
   /* Modal内カレンダー表示 */
   .modal-content .fc-toolbar .fc-right {
@@ -1107,12 +1118,21 @@ div.fc-scroller::-webkit-scrollbar-track {
   .modal-content .fc-view-container {
     top: 100px;
   }
+  #animatedModal .fc-toolbar.fc-header-toolbar{
+    padding: 0;
+  }
   .modal-footer {
-    float: none;
-    position: absolute;
-    top: 520px;
+    float: none !important;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     right: 0;
     z-index: 1;
+    background-color: #fff;
+    border-top: 2px solid #2C5379;
+  }
+  .modal-footer .close-animatedModal {
+    float: right;
   }
 }
 /*----- Event create page -----*/
@@ -1164,6 +1184,9 @@ div.fc-scroller::-webkit-scrollbar-track {
   float: right;
   padding: 20px;
 }
+.targetBox .collection li {
+  border: 1px solid #ddd !important;
+}
 @media only screen and (min-width: 601px) {
   #animatedModal {
     padding: 20px;
@@ -1211,6 +1234,42 @@ div.fc-scroller::-webkit-scrollbar-track {
   margin: 3rem auto;
   border-radius: 50%;
 }
+/* svg start */
+.svgBox {
+  width: 100%;
+  height: auto;
+  margin: 3rem auto;
+  text-align: center;
+}
+svg {
+	transform: rotate(-90deg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+circle {
+	fill: transparent;
+	stroke: #1de9b6;
+	stroke-width: 4;
+	animation: circle 2s;
+  animation-delay: 1s;
+}
+@keyframes circle {
+  0% { stroke-dasharray: 0 471; }
+  99.9%,to { stroke-dasharray: 471 471; }
+}
+polyline {
+  fill: transparent;
+  stroke: #1de9b6;
+  stroke-width: 4;
+  animation: polyline 3s;
+  animation-delay: 1s;
+}
+@keyframes polyline {
+  0% { stroke-dasharray: 0 471;  opacity: 0; }
+  99.9%,to { stroke-dasharray: 471 471; opacity: 1;}
+}
+/* svg end */
 .urlShare {
   margin: 1rem auto;
 }
@@ -1634,6 +1693,9 @@ textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="
 }
 .collection.statusList .collection-item.avatar .circle {
   left: 50px;
+}
+.collection.statusList .collection-item.avatar p {
+  line-height: 1rem;
 }
 .statusList.collection .collection-item.avatar .secondary-content {
   right: 50%;
