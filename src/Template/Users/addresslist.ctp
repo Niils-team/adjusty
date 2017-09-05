@@ -19,9 +19,6 @@
 
   <div class="addresslistBox">
     <h1 class="sp-h1">連絡先一覧</h1>
-    <p class="right-align">
-      <a href="#add" class="waves-effect waves-light btn modal-trigger">連絡先を追加</a>
-    </p>
     <div class="has-address">
       <ul class="collection">
 
@@ -54,6 +51,12 @@
 
       </ul>
 
+    </div>
+
+    <div class="fixed-action-btn">
+      <a href="#add" class="waves-effect modal-trigger btn-floating btn-large waves-effect waves-light blue">
+        <i class="material-icons">person_add</i>
+      </a>
     </div>
 
   </div>
