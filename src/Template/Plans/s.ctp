@@ -146,12 +146,14 @@ $this->assign('title', '予定の詳細');
   $i++;
   endforeach;
   ?>
+
+    <div class="planlists-item center-align create-btn">
+      <a class="center-align btn" href="#modal">上記の候補日で都合が合いません</a>
+    </div>
+    
   </div>
 
 
-        <div class="center-align create-btn">
-          <a class="center-align btn" href="#modal">上記の候補日で都合が合いません</a>
-        </div>
 
         <!--モーダル START -->
         <div id="modal" class="modal">
