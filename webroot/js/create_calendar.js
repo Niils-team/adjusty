@@ -77,8 +77,8 @@ $(document).ready(function() {
 
         // クリックしたらポップアップウィンドウ
         dayClick: function(date, jsEvent, view) {
-            $("#date-start").val(date.format());
-            $("#date-end").val(date.format());
+            $("#date-start").val(date.format('YYYY-MM-DD'));
+            $("#date-end").val(date.format('YYYY-MM-DD'));
             $("#time-start").val('');
             $("#time-end").val('');
             window.location.href = "#modal";
@@ -91,8 +91,8 @@ $(document).ready(function() {
         select: function(start, end, jsEvent, view) {
           $("#date-start").val(start.format('YYYY-MM-DD'));
           $("#date-end").val(end.format('YYYY-MM-DD'));
-          $("#time-start").val(start.format('hh:mm'));
-          $("#time-end").val(end.format('hh:mm'));
+          $("#time-start").val(start.format('H:mm'));
+          $("#time-end").val(end.format('H:mm'));
           window.location.href = "#modal";
         },
 
