@@ -23,7 +23,9 @@ $(document).ready(function() {
             agenda: {
               scrollTime: '07:00:00',
               minTime:'00:00:00',
-              maxTime:'24:00:00'
+              maxTime:'24:00:00',
+              slotDuration:'00:30:00',
+              defaultTimedEventDuration:'00:30:00',
             },
             day: {
                 titleFormat: 'M月DD日'
@@ -47,7 +49,6 @@ $(document).ready(function() {
             day: '日',
             listWeek: 'スケジュール'
         },
-
         // 終日スロットを表示
         allDaySlot: true,
         // 終日スロットのタイトル
@@ -81,6 +82,18 @@ $(document).ready(function() {
             $("#time-start").val('');
             $("#time-end").val('');
             window.location.href = "#modal";
+        },
+        //ドラッグ可能
+        selectable:true,
+        selectHelper:true,
+        selectLongPressDelay: 800,
+        //ドラッグ後処理
+        select: function(start, end, jsEvent, view) {
+          $("#date-start").val(start.format('YYYY-MM-DD'));
+          $("#date-end").val(end.format('YYYY-MM-DD'));
+          $("#time-start").val(start.format('hh:mm'));
+          $("#time-end").val(end.format('hh:mm'));
+          window.location.href = "#modal";
         },
 
         googleCalendarApiKey: '274185438642-dgsb3lcno471pai3o34e45k11pncvn9f.apps.googleusercontent.com',
