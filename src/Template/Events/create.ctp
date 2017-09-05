@@ -56,7 +56,7 @@
     </p>
   </div>
   <br>
-  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>
   <button data-remodal-action="confirm" class="remodal-confirm" id="add">OK</button>
 </div>
 <!--日付入力 END-->
@@ -73,13 +73,19 @@
   <div class="row"><!--STEP1 START -->
 
   <?php if (!empty($target_user)): ?>
+
       <h5 class="event-step">送信先</h5>
-      <div class="row">
-<img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $target_user->id ]); ?>" class="circle" />
-<?php echo $target_user->name ?>さん
-        </div>
-      
-<?php endif ?>
+      <div class="row targetBox">
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $target_user->id ]); ?>" class="circle" />
+            <span class="title"><?php echo $target_user->name ?>さん</span>
+            <p><?php echo $target_user->company_name ?></p>
+          </li>
+        </ul>
+      </div>
+
+  <?php endif ?>
 
       <h5 class="event-step">予定名とメモ</h5>
       <div class="row">
@@ -134,7 +140,7 @@
   </div><!--STEP2 END -->
 
   <div class="row">
-  
+
 
 
 
