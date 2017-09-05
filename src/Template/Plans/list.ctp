@@ -41,7 +41,7 @@
         <div class="right">
           <div class="sort-links">
 
-            <a href="<?php echo $this->Url->build(['action'=>'list']); ?>">すべて</a> |
+            <a href="<?php echo $this->Url->build(['action'=>'list']); ?>" class="activelink">すべて</a> |
             <a href="<?php echo $this->Url->build(['action'=>'list','adjusting']); ?>">調整中</a> |
             <a href="<?php echo $this->Url->build(['action'=>'list','fixed']); ?>">確定済</a>
 
@@ -60,28 +60,29 @@
           <i class="tiny material-icons adjusty-text deg-x-180 plan_arrow">call_made</i>
           <?php echo $this->Html->image('a_icon_white.png', ['class' => 'circle']); ?>
         <?php else: ?>
-          <i class="tiny material-icons adjusty-text deg-x-180 plan_arrow">call_received</i>
+          <i class="tiny material-icons grey-text deg-x-180 plan_arrow">call_received</i>
           <img src="<?= $this->Url->build(["controller" => "Users", "action" => "drawOther", $plan->user_id ]); ?>" class="circle" />
         <?php endif ?>
-          
-          
+
+
           <!-- <i class="material-icons circle">folder</i> -->
           <span class="title"><?php echo $plan['title']; ?></span>
           <p class="pushedtime">作成日時：<?php echo date('Y-m-d H:m', strtotime($plan['created'])); ?></p>
           <?php if ($plan['target_id'] == $user['id']): ?>
               <p class="pushedtime">作成者：<?php echo $plan->user->name ?></p>
           <?php endif ?>
-          
+
           <span class="adjusty-status">
             <div class="adjusty-status-inner">
-              <i class="tiny material-icons red-text">lens</i>
-              
+
               <?php if ($plan['is_fixed'] == 0): ?>
-                <div class="adjusty-status-inner-right">調整中</div>             
+                <i class="tiny material-icons red-text">lens</i>
+                <div class="adjusty-status-inner-right">調整中</div>
               <?php else: ?>
-                <div class="adjusty-status-inner-right">確定済</div>   
+                <i class="tiny material-icons teal-text">lens</i>
+                <div class="adjusty-status-inner-right">確定済</div>
               <?php endif ?>
-              
+
             </div>
           </span>
           <a href="#!" class="secondary-content"><i class="material-icons">keyboard_arrow_down</i></a>
@@ -140,7 +141,7 @@
             <?php else: ?>
               <a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'s',$plan->code]); ?>" class="waves-effect waves-light btn modal-trigger">詳細を確認</a>
             <?php endif ?>
-            
+
           </div>
 
         </div>
