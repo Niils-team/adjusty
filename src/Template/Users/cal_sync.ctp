@@ -3,7 +3,7 @@
 <?= $this->Form->create($user) ?>
   <div class="remindBox">
     <h1 class="center-align sp-h1">カレンダー連携設定</h1>
-    <h5 class="white-text grey darken-1 event-step">Googleカレンダー連携</h5>
+    <h5 class="event-step">Googleカレンダー連携</h5>
     <div class="row">
 
             <p>
