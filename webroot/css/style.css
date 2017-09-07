@@ -1011,7 +1011,13 @@ td.fc-today .fc-day-number {
   text-align: center;
   padding: 1px;
 }
-th.fc-day-header.fc-widget-header.fc-thu.fc-today {
+th.fc-day-header.fc-widget-header.fc-mon.fc-today,
+th.fc-day-header.fc-widget-header.fc-tue.fc-today,
+th.fc-day-header.fc-widget-header.fc-wed.fc-today,
+th.fc-day-header.fc-widget-header.fc-thu.fc-today,
+th.fc-day-header.fc-widget-header.fc-fri.fc-today,
+th.fc-day-header.fc-widget-header.fc-sat.fc-today,
+th.fc-day-header.fc-widget-header.fc-sun.fc-today {
   background-color: #2C5379;
   color: #fff;
   border-radius: 0;
