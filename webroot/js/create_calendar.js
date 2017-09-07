@@ -91,8 +91,8 @@ $(document).ready(function() {
         select: function(start, end, jsEvent, view) {
           $("#date-start").val(start.format('YYYY-MM-DD'));
           $("#date-end").val(end.format('YYYY-MM-DD'));
-          $("#time-start").val(start.format('H:mm'));
-          $("#time-end").val(end.format('H:mm'));
+          $("#time-start").val(start.format('HH:mm'));
+          $("#time-end").val(end.format('HH:mm'));
           window.location.href = "#modal";
         },
 
