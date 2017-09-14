@@ -11,7 +11,7 @@ $this->assign('title', '画像の編集');
   </div>
     <?php echo $this->Form->create(null, array('enctype' => 'multipart/form-data')); ?>
 
-    <div class="center-align">
+    <div class="center-align m-t-20">
       <a href="<?php echo $this->Url->build(["controller" => "Users", "action" => "imgDelete", 2]); ?>" class="btn delete-btn" role="button">削除する</a>
       <a href="<?php echo $this->Url->build(["controller" => "Users", "action" => "coverImgEdet"]); ?>" class="btn uplode-btn" role="button">カバー画像の変更</a>
     </div>

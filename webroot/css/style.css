@@ -53,6 +53,9 @@ p {
 .parallax-container .section {
   width: 100%;
 }
+.m-t-20 {
+  margin-top: 20px;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container {
@@ -1544,6 +1547,17 @@ li.noinfo {
   margin: 30px auto;
 }
 
+/* 画像アップロード */
+.zoom-btn, .zoom-btn:hover {
+  background-color: #aaa;
+}
+.file-field .btn {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.file-btn, .file-btn:hover {
+  background-color: #08233E;
+}
 /*----- Tablet -----*/
 @media only screen and (min-width: 601px) {
   .settingBox, .loginBox,

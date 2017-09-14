@@ -11,7 +11,7 @@ $this->assign('title', 'メイン画像の編集');
   <div class="action">
       <form action="#">
       <div class="file-field input-field">
-        <div class="btn">
+        <div class="btn file-btn">
           <span>File</span>
           <input id="file" type="file">
         </div>
@@ -20,8 +20,8 @@ $this->assign('title', 'メイン画像の編集');
         </div>
       </div>
       <p class="center-align">
-        <input type="button" id="btnZoomOut" value="縮小" class="btn upload-btn">
-        <input type="button" id="btnZoomIn" value="拡大" class="btn upload-btn">
+        <input type="button" id="btnZoomOut" value="－ 縮小" class="btn zoom-btn">
+        <input type="button" id="btnZoomIn" value="＋ 拡大" class="btn zoom-btn">
         <input type="button" id="btnCrop" value="決定" class="btn upload-btn">
       </p>
     </form>
