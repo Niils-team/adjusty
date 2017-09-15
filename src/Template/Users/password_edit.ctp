@@ -8,12 +8,29 @@
     <div class="row">
       <div class="input-field col s12">
         <?php
+            echo $this->Form->input('old_password', array(
+              'label' => array(
+                'text' => '現在のパスワード'
+              ),
+              'type' => 'password',
+              'class' => 'validate',
+              'placeholder' => '現在のパスワードを入力してください',
+              'required' => true
+            ));
+        ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <?php
             echo $this->Form->input('password', array(
               'label' => array(
                 'text' => '新しいパスワード'
               ),
               'class' => 'validate',
-              'placeholder' => 'パスワードを入力してください'
+              'placeholder' => 'パスワードを入力してください',
+              'required' => true
+
             ));
         ?>
       </div>
@@ -24,7 +41,8 @@
             echo $this->Form->password('password_confirm', array(
               'label' => false,
               'class' => 'validate',
-              'placeholder' => '確認のため再度入力してください'
+              'placeholder' => '確認のため再度入力してください',
+              'required' => true
             ));
         ?>
         <label>確認</label>

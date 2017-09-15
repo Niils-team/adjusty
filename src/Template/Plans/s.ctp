@@ -25,6 +25,27 @@ $(document).ready(function(){
   });
 </script>
 
+
+<!--Modal STRAT-->
+<div id="animatedModal">
+
+  <div class="modal-content">
+
+    <div id='calendar'></div>
+
+    <div class="modal-footer">
+
+      <div  id="btn-close-modal" class="close-animatedModal">
+        <a href="#!" class="modal-action modal-close waves-effect btn back2-btn">カレンダーを閉じる</a>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+<!--Modal END-->
+
 <?php
 error_reporting(0);
 $this->assign('title', '予定の詳細');
