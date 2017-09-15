@@ -195,7 +195,7 @@ $('#submit').click(function() {
         <span class="btn-floating grey lighten-1"><i class="material-icons left">add</i></span>&nbsp;候補日を追加
       </div>
     </a>
-    <a href="#" onclick="javascript:window.history.back(-1);return false;" class="btn back-btn"><i class="small left material-icons">arrow_back</i>プラン一覧に戻る</a>
+    <a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>" >" class="btn back-btn"><i class="small left material-icons">arrow_back</i>プラン一覧に戻る</a>
 
 
   </div>
