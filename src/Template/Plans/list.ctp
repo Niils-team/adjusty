@@ -7,10 +7,6 @@
       <!-- 依頼を受けた＆未読の案件があれば件数とともに表示 -->
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'list']); ?>" class="indicator">調整リスト
 
-      <?php if ($plan_fix_cnt != 0): ?>
-        <span class="badge red"><?php echo $plan_fix_cnt ?></span>
-      <?php endif ?>
-
       </a></div>
       <div class="col s6"><a href="<?php echo $this->Url->build(['controller'=>'Plans', 'action'=>'calendar']); ?>">カレンダー</a></div>
     </div>
@@ -126,8 +122,6 @@
               echo '未確定';
               echo '<br>';
             }
-
-
 
             }
           ?>
