@@ -37,7 +37,7 @@
         <div class="right">
           <div class="sort-links">
 
-            <a href="<?php echo $this->Url->build(['action'=>'list']); ?>" class="activelink">すべて</a> |
+            <a href="<?php echo $this->Url->build(['action'=>'list']); ?>">すべて</a> |
             <a href="<?php echo $this->Url->build(['action'=>'list','adjusting']); ?>">調整中</a> |
             <a href="<?php echo $this->Url->build(['action'=>'list','fixed']); ?>">確定済</a>
 

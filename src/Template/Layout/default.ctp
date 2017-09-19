@@ -121,4 +121,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
       alert('コピーしました');
   }, false);
 </script>
+<script type="text/javascript">
+  $(window).bind("load", function(){
+
+  // 現在ページのURL取得
+  var url   = location.href;
+
+  // 現在ページが http://example.com/ なら実行
+  if(url == "https://adjusty.me/plans/list"){
+    $('.sort-links a:nth-child(1)').addClass('activelink');
+  }
+  if(url == "https://adjusty.me/plans/list/adjusting"){
+    $('.sort-links a:nth-child(2)').addClass('activelink');
+  }
+  if(url == "https://adjusty.me/plans/list/fixed"){
+    $('.sort-links a:nth-child(3)').addClass('activelink');
+  }
+
+  });
+</script>
 </html>
