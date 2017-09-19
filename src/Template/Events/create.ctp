@@ -33,7 +33,7 @@
     <p id="modal1Desc">
       <div class="row">
         <div class="input-field col s6">
-          <input id="date-start" class="form-control" type="text" eadonly="readonly" >
+          <input id="date-start" class="form-control" type="text">
           <label class="active2">開始日</label>
         </div>
         <div class="input-field col s6">
@@ -41,7 +41,7 @@
           <label class="active2">開始時間</label>
         </div>
         <div class="input-field col s6">
-          <input id="date-end" class="form-control" type="text" eadonly="readonly" >
+          <input id="date-end" class="form-control" type="text">
           <label class="active2">終了日</label>
         </div>
         <div class="input-field col s6">
