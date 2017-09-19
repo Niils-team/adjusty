@@ -1173,10 +1173,12 @@ div.fc-scroller::-webkit-scrollbar-track {
 }
 .events-delete-btn {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 .5rem;
+  top: 2px;
+  right: 2px;
+  padding: 0;
   border: none;
+  line-height: 20px;
+  height: 20px;
 }
 .events-delete-btn, .events-delete-btn:hover,
 .events-delete-btn:focus, .events-delete-btn:visited {
@@ -1299,6 +1301,7 @@ polyline {
   padding: 10px;
   margin: 0 auto;
   border: .5px solid #ddd;
+  height: 76px;
 }
 .made-planlists-item {
   padding: 15px;
@@ -1310,10 +1313,11 @@ polyline {
   color: #ddd;
 }
 .planlists-item ul {
-  border: .5px solid #ddd;
+  /*border: .5px solid #ddd;*/
   border-radius: 8px;
   padding: 6px;
   max-width: 100px;
+  position: relative;
 }
 .made-planlists-item ul {
   border: 1px solid #ddd;
@@ -1322,13 +1326,48 @@ polyline {
 .made-planlists-item ul li {
   text-align: center;
 }
+.planlists-item ul::after {
+  content: "";
+  top: 0px;
+  left: 0px;
+  border-bottom: .8rem solid transparent;
+  border-left: .8rem solid #FDC44F;
+  position: absolute;
+  z-index: 100;
+}
 .planlists-item ul li:nth-child(2) {
   position: relative;
-  height: 45px;
+  height: 25px;
   width: 100%;
-  line-height: 45px;
+  line-height: 25px;
   margin: 0 auto;
   text-align: center;
+}
+.select-modal {
+  display: block;
+  width: 100%;
+  height: 85.2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.select-modal p {
+  color: #333;
+  line-height: 76px;
+  font-weight: bold;
+}
+.select-modal-trigger {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #ddd;
 }
 .plan-date {
   position: absolute;
@@ -1336,16 +1375,17 @@ polyline {
   right: 0;
 }
 .num-mid {
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.2rem;
   margin: .5rem auto;
 }
 .eventBox .row .col {
   padding: 0;
 }
 .num-big {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+}
+.small-letter {
+  font-size: 0.8rem;
 }
 .slush-big {
   font-size: 4rem;
