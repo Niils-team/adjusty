@@ -154,13 +154,13 @@
 
 
 	        list_html = '<div id="add_event' + cnt + '">' +
-	            '<div class="row planlists-item"><div class="col s4"><ul class="center-align"><li><span class="small-letter">' +
-	            year +
-	            '</span></li><li><span class="num-big plan-month">' +
+	            '<div class="row planlists-item"><div class="col s4"><ul class="center-align">' +
+	            // '<li><span class="small-letter">' + year + '</span></li>'
+	            '<li><span class="num-big plan-month">' +
 	            month + '/' + day +
 	            '</span></li><li><span class="small-letter">' + ' (' + Week + ')' + '</span></li></ul></div><div class="col s8">' +
 	            $("#title").val() +
-	            '<p class="center-align num-mid">' +
+	            '<p class="num-mid">' +
 	            hour + ':' + minute +
 	            '~' +
 	            hourend + ':' + minuteend +
