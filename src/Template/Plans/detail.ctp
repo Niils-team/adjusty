@@ -165,43 +165,49 @@ $('#submit').click(function() {
       <div class="row made-planlists-item selected">
     <?php endif; ?>
 
+      <div class="col s4">
+        <ul class="center-align">
+          <li><span class="num-big plan-month"><?php echo date('m/d', strtotime($event['start'])); ?></span></li>
+          <li><span>（<?php echo $weekjp[$weekno];?>）</span></li>
+        </ul>
+      </div>
 
-      <div class="col s9">
-        <h4 class="etitle">
-          <?php echo date('Y', strtotime($event['start'])); ?>年<?php echo date('m', strtotime($event['start'])); ?>月<?php echo date('d', strtotime($event['start'])); ?>日
-          （<?php echo $weekjp[$weekno];?>）&nbsp;<?php
+      <div class="col s6">
+        <?php if ($event['title'] != null): ?>
+          <p><?php echo $event['title']; ?></p>
+        <? endif; ?>
+        <p class="num-mid">
+          <?php
           # 終日チェック
           if ($event['allDay'] == 1) {
             echo '終日';
           } else {
             echo date('H:i', strtotime($event['start'])).'〜'.date('H:i', strtotime($event['end']));
           }
+          ?>
+        </p>
+      <?php if ($event['fixed_flag'] == 1): ?>
+        <p>相手：<?php echo $event['guest_name']; ?></p>
+        <p>メールアドレス：<?php echo $event['guest_email']; ?></p>
+      <?php endif; ?>
 
-          ?></h4>
-        <?php if ($event['title'] != null): ?>
-          <p><?php echo $event['title']; ?></p>
-        <? endif; ?>
-        <?php if ($event['fixed_flag'] == 1): ?>
-          <p>相手：<?php echo $event['guest_name']; ?></p>
-          <p>メールアドレス：<?php echo $event['guest_email']; ?></p>
-        <?php endif; ?>
+    </div>
+    <div class="col s2">
+      <?php if ($event['fixed_flag'] == 0): ?>
+        <div class="right-align">
+          <!-- Dropdown Trigger -->
+          <a class='dropdown-button' href='#' data-activates='planmenu<?php echo $i; ?>'><i class="material-icons">more_vert</i></a>
+          <!-- Dropdown Structure -->
+          <ul id='planmenu<?php echo $i; ?>' class='dropdown-content'>
+            <li><a href="<?= $this->Url->build(['controller' => 'Plans', 'action' => 'edit', $plan['id'],$event['id']]); ?>">編集</a></li>
+            <li><?= $this->Form->postLink(__('削除'), ['action' => 'deleteEvent', $event['id'],$plan['id']], ['confirm' => __('この候補日を削除してもよろしいですか？', $event['id'])]) ?></li>
+          </ul>
+        </div>
+      <?php else: ?>
+          <a class="btn-flat disabled" style="color:#26a69a !important;"><i class="material-icons left">done</i>確定</a>
+      <?php endif; ?>
+    </div>
 
-      </div>
-      <div class="col s3">
-        <?php if ($event['fixed_flag'] == 0): ?>
-          <div class="right-align">
-            <!-- Dropdown Trigger -->
-            <a class='dropdown-button' href='#' data-activates='planmenu<?php echo $i; ?>'><i class="material-icons">more_vert</i></a>
-            <!-- Dropdown Structure -->
-            <ul id='planmenu<?php echo $i; ?>' class='dropdown-content'>
-              <li><a href="<?= $this->Url->build(['controller' => 'Plans', 'action' => 'edit', $plan['id'],$event['id']]); ?>">編集</a></li>
-              <li><?= $this->Form->postLink(__('削除'), ['action' => 'deleteEvent', $event['id'],$plan['id']], ['confirm' => __('この候補日を削除してもよろしいですか？', $event['id'])]) ?></li>
-            </ul>
-          </div>
-        <?php else: ?>
-            <a class="btn-flat disabled" style="color:#26a69a !important;"><i class="material-icons left">done</i>確定</a>
-        <?php endif; ?>
-      </div>
     </div>
 
     <?php $i++; endforeach; ?>
