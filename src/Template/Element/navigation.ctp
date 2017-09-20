@@ -6,7 +6,7 @@
   <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
 </ul>
 
-<ul id="dropdown2" class="dropdown-content">
+<!-- <ul id="dropdown2" class="dropdown-content">
 
 <?php if ($msg_cnt > 0): ?>
 
@@ -39,7 +39,7 @@
 
 <?php endif ?>
 
-</ul>
+</ul> -->
 
 <ul id="dropdown3" class="dropdown-content">
   <li><a href="#!">ヘルプ</a></li>
@@ -74,8 +74,7 @@
         </a>
         <div class="a-tooltip-inner">予定の確認・修正</div>
       </li>
-      <li></li>
-      <li class="a-tooltip">
+      <!-- <li class="a-tooltip">
         <a class="dropdown-button" href="#!" data-activates="dropdown4">
           <i class="material-icons" id="friend-icon">perm_contact_calendar</i>
         </a>
@@ -94,7 +93,7 @@
           </i>
         </a>
         <div class="a-tooltip-inner">通知</div>
-      </li>
+      </li> -->
       <li class="a-tooltip">
         <a class="dropdown-button" href="#!" data-activates="dropdown3">
           <i class="material-icons" id="info-icon">help_outline</i>
@@ -122,7 +121,7 @@
       </li>
       <li><?php echo $this->Html->link('ホーム', ['controller' => 'Plans', 'action' => 'top']); ?></li>
       <li><?php echo $this->Html->link('新規予定作成', ['controller' => 'Events', 'action' => 'create']); ?></li>
-      <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li>
+      <!-- <li><?php echo $this->Html->link('連絡先一覧', ['controller' => 'Users', 'action' => 'addresslist']); ?></li> -->
       <li><?php echo $this->Html->link('予定の確認・修正', ['controller' => 'Plans', 'action' => 'list']); ?></li>
       <li><?php echo $this->Html->link('マイページ', ['controller' => 'Users', 'action' => 'mypage']); ?></li>
       <li><?php echo $this->Html->link('設定', ['controller' => 'Users', 'action' => 'setting']); ?></li>
@@ -133,11 +132,11 @@
       <li><?php echo $this->Html->link('ログアウト', ['controller' => 'Users', 'action' => 'logout']); ?></li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    <a href="<?= $this->Url->build(["controller" => "Messages", "action" => "list"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
+    <!-- <a href="<?= $this->Url->build(["controller" => "Messages", "action" => "list"]); ?>" class="hide-on-large-only right"><i class="material-icons">notifications
             <?php if ($msg_flag > 0): ?>
               <span class="new badge"></span>
             <?php endif ?>
       </i>
-    </a>
+    </a> -->
   </div>
 </nav>
