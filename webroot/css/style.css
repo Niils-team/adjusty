@@ -800,7 +800,8 @@ ul.collection.collapsible {
   font-size: 1rem;
   margin-bottom: 0;
 }
-.planBox .planlists {
+.planBox .planlists,
+.plandetailBox .planlists {
   padding: 0;
 }
 
@@ -1569,6 +1570,9 @@ li.noinfo {
 }
 .btns {
   padding: 2rem;
+}
+.edit-planlists {
+  padding: 3rem;
 }
 /*----- Setting page -----*/
 .settingBox {
