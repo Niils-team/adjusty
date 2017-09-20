@@ -102,12 +102,26 @@ $('#submit').click(function() {
 
   <h5 class="event-step">共有URL ※共有URLの編集はできません</h5>
   <div class="center-align">
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="text" value="<?php echo EVENT_URL.$plan['code']; ?>" class="validate">
+    <div class="row urlShare">
+      <form class="col s12" name="targetForm">
+        <div class="row">
+          <div class="input-field col s10">
+            <input value="<?php echo EVENT_URL.$plan['code']; ?>" id="copyCode" type="text" class="validate" name="inputArea">
+          </div>
+          <p class="col s2">
+            <button name="copyButton" id="copyButton2" class="btn url_copy_btn tooltipped" data-position="top" data-delay="30" data-tooltip="クリックでコピー">
+              <i class="tiny material-icons">content_copy</i>
+            </button>
+          </p>
         </div>
-      </div>
+      </form>
+    </div>
+
+      <!-- <div class="row">
+        <div class="input-field col s12">
+          <input type="text" value="<?php echo EVENT_URL.$plan['code']; ?>" class="validate" readonly>
+        </div>
+      </div> -->
 
   </div>
   <div class="center-align">
@@ -155,7 +169,7 @@ $('#submit').click(function() {
       <div class="col s9">
         <h4 class="etitle">
           <?php echo date('Y', strtotime($event['start'])); ?>年<?php echo date('m', strtotime($event['start'])); ?>月<?php echo date('d', strtotime($event['start'])); ?>日
-          （<?php echo $weekjp[$weekno];?>）<br><?php
+          （<?php echo $weekjp[$weekno];?>）&nbsp;<?php
           # 終日チェック
           if ($event['allDay'] == 1) {
             echo '終日';
@@ -164,7 +178,9 @@ $('#submit').click(function() {
           }
 
           ?></h4>
-        <p><?php echo $event['title']; ?></p>
+        <?php if ($event['title'] != null): ?>
+          <p><?php echo $event['title']; ?></p>
+        <? endif; ?>
         <?php if ($event['fixed_flag'] == 1): ?>
           <p>相手：<?php echo $event['guest_name']; ?></p>
           <p>メールアドレス：<?php echo $event['guest_email']; ?></p>
