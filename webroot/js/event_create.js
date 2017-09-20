@@ -48,12 +48,12 @@
 	            return false;
 	        }
 
-					if (top_title_length >= 40) {
-							alert('予定名は40文字以下で入力して下さい')
+					if (top_title_length > 20) {
+							alert('予定名は20文字以下で入力して下さい')
 							return false;
 					}
 
-					if (top_memo_length >= 100) {
+					if (top_memo_length > 100) {
 						alert('メモは100文字以下で入力して下さい')
 						return false;
 					}
@@ -73,8 +73,8 @@
 	            var event_title = '';
 	        }
 
-					if (event_title_length >= 40) {
-							alert('メモは40文字以下で入力して下さい')
+					if (event_title_length > 20) {
+							alert('メモは20文字以下で入力して下さい')
 							return false;
 					}
 
@@ -154,17 +154,18 @@
 
 
 	        list_html = '<div id="add_event' + cnt + '">' +
-	            '<div class="row planlists-item"><div class="col s4"><ul class="center-align"><li><span>' +
+	            '<div class="row planlists-item"><div class="col s4"><ul class="center-align"><li><span class="small-letter">' +
 	            year +
-	            '</span></li><li><span class="red-text num-big plan-month">' +
+	            '</span></li><li><span class="num-big plan-month">' +
 	            month + '/' + day +
-	            '</span></li><li><span>' + '(' + Week + ')' + '</span></li></ul></div><div class="col s8">' +
+	            '</span></li><li><span class="small-letter">' + ' (' + Week + ')' + '</span></li></ul></div><div class="col s8">' +
 	            $("#title").val() +
-	            '<p class="center-align red-text num-mid">' +
+	            '<p class="center-align num-mid">' +
 	            hour + ':' + minute +
 	            '~' +
 	            hourend + ':' + minuteend +
-	            '<div class="center-align"><a class="btn events-copy-btn" onClick="changeDay(' + cnt + ')" ><span class="hide-on-med-and-down">日付を変更して複製</span><span class="hide-on-large-only"><i class="material-icons tiny">content_copy</i>コピー</span></a><a class="btn events-delete-btn" onClick="del(' + cnt + ')" ><i class="material-icons tiny">clear</i></a></div></div></p></div></div>' +
+	            '</p><a class="btn events-delete-btn" onClick="del(' + cnt + ')" ><i class="material-icons tiny">clear</i></a></div></div></div>' +
+							//<a class="btn events-copy-btn" onClick="changeDay(' + cnt + ')" ><span class="hide-on-med-and-down">日付を変更して複製</span><span class="hide-on-large-only"><i class="material-icons tiny">content_copy</i>コピー</span></a>
 	            '</div>';
 
 	        $('#list').append(list_html);

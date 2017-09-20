@@ -49,7 +49,7 @@
           <label class="active2">終了時間</label>
         </div>
         <div class="input-field col s12">
-          <input type="text" name="title" id="title" placeholder="この候補日のメモを入れてください" >
+          <input type="text" name="title" id="title" placeholder="20文字以内でメモを入れられます" >
           <label class="active2">メモ</label>
         </div>
       </div>
@@ -110,7 +110,7 @@
                 'div' => false,
                 'class' => 'materialize-textarea',
                 'id' => 'event_memo',
-                'placeholder' => '予定に関するメモを保存できます',
+                'placeholder' => '100文字以内で予定に関するメモを保存できます',
               )); ?>
           <label class="active">メモ</label>
         </div>
@@ -126,7 +126,7 @@
          <div class="input-field col s12">
 
             <div id='list'>
-            <div id='data'></div>
+              <div id='data'></div>
             </div>
 
         </div>

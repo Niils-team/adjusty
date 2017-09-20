@@ -44,8 +44,8 @@
 
 			    var top_title_length = $("#title").val().length;
 
-			    if (top_title_length >= 40) {
-			        alert('メモは40文字以下で入力して下さい');
+			    if (top_title_length > 20) {
+			        alert('メモは20文字以下で入力して下さい');
 			        return false;
 			    }
 
