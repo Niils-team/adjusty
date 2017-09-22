@@ -22,8 +22,12 @@
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('reset.css') ?>
+    <?= $this->Html->css('//fonts.googleapis.com/icon?family=Material+Icons') ?>
+    <?= $this->Html->css('//fonts.googleapis.com/css?family=Niconne') ?>
+    <?= $this->Html->css('//fonts.googleapis.com/earlyaccess/mplus1p.css') ?>
+    <?= $this->Html->css('materialize.css') ?>
+    <?= $this->Html->css('style.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -31,17 +35,26 @@
 </head>
 <body>
     <div id="container">
-        <div id="header">
-            <h1><?= __('Error') ?></h1>
+      <nav class="adjusty-nav" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="<?= $this->Url->Build(['controller' => 'Plans', 'action' => 'top']); ?>" class="brand-logo">Adjusty</a>
         </div>
-        <div id="content">
+      </nav>
+
+        <div id="header">
+            <h1 class="center-align"><?= __('エラー') ?></h1>
+        </div>
+        <div id="content" class="center-align errorpage">
             <?= $this->Flash->render() ?>
 
             <?= $this->fetch('content') ?>
+            <p class="errormessageBox">
+              <?= $this->Html->link(__('元のページに戻る'), 'javascript:history.back()', ['class'=>'btn']) ?>
+            </p>
         </div>
-        <div id="footer">
-            <?= $this->Html->link(__('Back'), 'javascript:history.back()') ?>
-        </div>
+        <footer class="page-footer">
+          <?php echo $this->element('copyright'); ?>
+        </footer>
     </div>
 </body>
 </html>
